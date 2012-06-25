@@ -1,0 +1,19 @@
+<% if flash[:notice] %>
+  <% flash.each do |name, msg| %>
+    <div id="flash_<%= name %>" class="web-alert-succes">
+      <%= msg %>
+    </div>
+  <% end %>
+<% elsif flash[:alert] %>
+  <% flash.each do |name, msg| %>
+    <div id="flash_<%= name %>" class="web-alert-error">
+      <%= msg %>
+    </div>
+  <% end %>
+<% elsif flash[:error] %>
+<% flash.each do |name, msg| %>
+  <div id="flash_<%= name %>" class="web-alert-error">
+    <%= msg %>
+  </div>      
+  <% end %>
+<% end %>

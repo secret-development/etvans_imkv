@@ -1,7 +1,12 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@mixin rounded{
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  -o-border-radius:5px;
+}
 // about.html.erb
 #about-page{
   margin:20px;
@@ -18,5 +23,79 @@
   font-size:15px;
   p{
     margin-bottom:10px;
+  }
+}
+
+// index.html.erb -> results
+#result-s{
+  // border:1px solid #ccc;
+  margin-top:20px;
+  margin-bottom:10px;
+  // h1
+  .result-s-title-main{
+    font-size:16px;
+    margin-bottom:10px;
+    font-weight:normal;
+    color:#4E4E4E;
+  }
+  // sort options
+  #result-s-sort{
+    margin-bottom:30px;
+    font-size:11px;
+    .result-s-sort-title{
+      color:#4E4E4E;
+    }
+  }
+  // one subject
+  .result-s-subject{
+    margin-bottom:25px;
+    // border:1px solid #ccc;
+    .result-s-subject-photo{
+      border:1px solid #ccc;
+      padding:5px;
+      float:left;
+      height:95px;
+      width:150px;
+      img{
+        height:95px;
+        width:150px;
+        box-shadow: 0 0 6px #8F8F8F;
+        box-shadow: 0 0 6px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0 0 6px rgba(0,0,0,0.4);
+        -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.4);
+        &:hover{
+          box-shadow: 0 0 5px black;
+          box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+      }
+    }
+    .result-s-subject-header{
+      float:left;
+      width:75%;
+      
+      margin-left:10px;
+      .result-active{
+        background:#E9F5F8;
+        padding:5px;
+        @include rounded;
+      }
+      .result-inactive{
+        background:#F8DBDB;
+        padding:5px;
+        @include rounded;
+      }
+      .result-s-subject-room{
+        color:#5C5C5C;
+        display: inline-block;
+      }
+    }
+    .result-subject-other-info{
+      // border:1px solid #ccc;
+      margin-top:5px;
+      font-size:11px;
+      color:#535353;
+    }
   }
 }

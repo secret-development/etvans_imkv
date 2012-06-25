@@ -3,7 +3,7 @@ module ApplicationHelper
   include Icons
   require 'simple_form'
 
-  # title for website
+  # for website:
   def w_title
     if @w_title
       "Империя квартир | #{@title}"
@@ -11,9 +11,12 @@ module ApplicationHelper
       "Империя квартир"
     end
   end
-  # end title for website
   
-  # title for etvans
+  def flash_msg_website(object)
+    render(:partial => "shared/website/flashmsg", :locals => {:object => object})
+  end
+  
+  # for app:
   def base_title
     "Этванс"
   end
