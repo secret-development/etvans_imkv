@@ -1,6 +1,7 @@
 <% if @subjects %>
   <div class="grid_10 push_1" id="result-s">
     <h1 class="result-s-title-main">Результат (<%= @subjects.size %>):</h1>
+    <!-- сортировка -->
     <div id="result-s-sort">
       <span class="result-s-sort-title">Сортировать по:</span>
       <%= sort_link @search, :price, "по цене" %> | 
@@ -14,15 +15,15 @@
         <div class="result-s-subject-photo">
           <% if isset_photo?(s) %>
             <%= link_to(image_tag(s.photos.first.image_url(:thumb),                     
-                :title => "#{s.photos.size} фото"), guest_subject_path(s)) %>
+                :title => "#{s.photos.size} фото"), subweb_path(s)) %>
           <% else %>
-            <%= link_to(image_tag("app/no-photo.gif", :title => "Нет фото"), guest_subject_path(s)) %>
+            <%= link_to(image_tag("app/no-photo.gif", :title => "Нет фото"), subweb_path(s)) %>
           <% end %>
         </div>
         <div class="result-s-subject-header">
           <% if s.active == true %>
             <div class="result-active">
-              <%= link_to s.typesubject.name, guest_subject_path(s) %>
+              <%= link_to s.typesubject.name, subweb_path(s) %>
               за <%= price_currency(s) %>
               |
               <% if have_object?(s.room) %>
@@ -33,7 +34,7 @@
             </div>
           <% else %>
             <div class="result-inactive">
-              <%= link_to s.typesubject.name, guest_subject_path(s) %>
+              <%= link_to s.typesubject.name, subweb_path(s) %>
               за <%= price_currency(s) %>
               |
               <% if have_object?(s.room) %>
