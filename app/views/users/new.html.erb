@@ -1,0 +1,69 @@
+<%= form_for(@user, :html => {:class => "form-horizontal", :id => "user-new"}) do |f| %>
+  <fieldset>
+    <%= error_messages_for(@user) %>
+    <legend> <%= @user.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :lastname, "Фамилия" %>
+      <div class="controls">
+        <%= f.text_field :lastname %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :firstname, "Имя" %>
+      <div class="controls">
+        <%= f.text_field :firstname %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :phonehome, "Дом. телефон" %>
+      <div class="controls">
+        <%= f.text_field :phonehome %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :phonemobile, "Сот. телефон" %>
+        <div class="controls">
+          <span class="phone-area-start">+7</span>
+          <%= f.text_field :area_code, :id =>"area_code", :maxlength => 3, :class => "input-mphone" %> - 
+          <%= f.text_field :phonemobile1, :id => "phonemobile1", :maxlength => 3, :class => "input-mphone" %> -
+          <%= f.text_field :phonemobile2, :id => "phonemobile2", :maxlength => 4, :class => "input-mphone" %>
+        </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :email, "Почтовый адрес" %>
+      <div class="controls">
+      <%= f.email_field :email %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :password, @user.label_value %>
+      <div class="controls">
+      <%= f.password_field :password, :id => "password" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, "Повторите пароль" %>
+      <div class="controls">
+      <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+    <% if current_user.role? %>  
+    <div class="control-group">
+      <%= f.label :role, "Администратор" %>
+      <div class="controls">
+      <%= f.check_box :role %>
+      </div>
+    </div>
+    <% else %>
+    <% end %>  
+    <div class="form-actions"> 
+      <%= f.submit "Создать", :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>  
+<% end %>

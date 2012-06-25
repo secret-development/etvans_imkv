@@ -1,0 +1,170 @@
+// variables:
+$small-font: 0.8em/1.5em Arial, Tahoma, sans-serif;
+
+body{
+  padding-top: 60px;
+}
+
+#main-wrapper{
+  // CONTENT
+  #content{
+
+  }
+
+  // FOOTER
+  #footer{
+    font: $small-font;
+    margin-top: 20px;
+  }
+}
+
+// title
+.title-page{
+ font-size: 26px;
+ margin:10px 0px 20px 0px;
+ font-weight: normal;
+}
+
+// clear block
+.clear{
+  clear: both;
+}
+
+// button add
+.button-add{
+  margin:10px 0px 20px 0px;
+}
+
+// actions: show/edit/delete
+.actions-buttons{
+  a{
+    margin-right:7px;
+  }
+}
+
+.valuefield-typesubject-title{
+  background:#F0F0F0;
+  color:#454545;
+  th{
+    font-size:18px;
+    padding:10px;  
+    font-weight:normal;
+  }  
+}
+.cv-table{
+  tr{
+    td{
+      width:33%;
+    }
+  }
+}
+
+// calc-label
+.calc-label{
+  font-size:11px;
+  color:#8B8B8B;
+}
+
+#settings-link{
+  background:url('config_icon.png') no-repeat 0px 12px;
+  padding-left:9px;
+}
+
+// class for mobile phone fields:
+.input-mphone{
+  width:40px;
+}
+.phone-area-start{
+  color:#898989;
+  margin-right:5px;
+}
+
+// class for address(subects) fields:
+.address-label{
+  color:#898989;
+  font-size:11px;
+}
+
+// button property cancel
+.property-cancel{
+  position:relative;
+  top:1px;
+}
+
+// validations
+form{
+  .controls{
+    label.error{
+      display:inline-block;
+      margin-left:10px;
+      color:#B43B39;
+      font-size:11px;
+    }
+  }
+}
+
+// errors - server validation output
+.errorExplanation{
+  margin-bottom:10px;
+  color:#666666;
+  border:1px solid #B43B39;
+  padding:5px;
+  font-size:12px;
+  .error-title{
+    font-size:17px;
+  }
+}
+
+#tasks-size{
+  margin-left:5px;
+  display: inline-block;
+  float:left;
+  padding:1px 7px;
+  font-size:10px;
+  background:#B6E4F8;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+  border-radius:25px;
+  -o-border-radius:25px;
+}
+.tasks-size-label{
+  float:left;
+  &:hover{
+    background:none !important;
+    color:#ccc !important;
+  }
+}
+
+// small inputs
+.sm-inp{
+  width:40px;
+}
+.norm-inp{
+  width:80px;
+}
+
+// links in tables
+table{
+  tbody{
+    color:#494949;
+    a{
+      color:#575757;
+      text-decoration:underline;
+      &:hover{
+        color:#494949;
+        text-decoration:none;
+      }
+    }
+  }
+}
+
+// warning in settings -> cities
+.warning-city{
+  font-size:12px;
+  color:#B17880;
+  font-weight:normal;
+  margin:10px 0px;
+}
+.id-table{
+  font-size:11px;
+}

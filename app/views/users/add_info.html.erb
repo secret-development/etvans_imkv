@@ -1,0 +1,47 @@
+<%= form_for(@user, :action => "add_info", :html => {:class => "form-horizontal"}) do |f| %>
+    <%= error_messages_for(@user) %>
+    <fieldset>
+       <legend><%= @user.legend_value %></legend>
+    
+      <div class="control-group">
+        <%= f.label :lastname, "Фамилия" %>
+        <div class="controls">
+          <%= f.text_field :lastname %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+        <%= f.label :firstname, "Имя" %>
+        <div class="controls">
+          <%= f.text_field :firstname %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+        <%= f.label :phonehome, "Дом. телефон" %>
+        <div class="controls">
+          <%= f.text_field :phonehome %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+        <%= f.label :phonemobile, "Сотовый телефон:" %>
+        <div class="controls">
+          <span class="phone-area-start">+7</span>
+          <%= f.text_field :area_code, :id => "area_code", :maxlength => 3,
+              :class => "input-mphone", :placeholder => "775" %> - 
+          <%= f.text_field :phonemobile1, :id => "phonemobile1", 
+              :maxlength => 3, :class => "input-mphone", :placeholder => "674"%> - 
+          <%= f.text_field :phonemobile2, :id => "phonemobile2",
+              :maxlength => "4", :class => "input-mphone", 
+              :placeholder => "8724"%>
+        </div>
+      </div>
+      
+      <div class="form-actions"> 
+        <%= f.submit @user.button_value, :class => "btn btn-primary" %>
+        <button type="reset" class="btn cancel-form">Отмена</button>
+      </div>
+    </fieldset>
+<% end %>
+<%= link_to 'Изменить пароль', edit_user_path(current_user)  %>

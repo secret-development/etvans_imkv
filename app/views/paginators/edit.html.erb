@@ -1,0 +1,18 @@
+<%= form_for(@paginator, :html => {:class => "form-horizontal pag-valid-form"}) do |f| %>
+  <%= error_messages_for(@paginator) %>
+  <fieldset>
+    <legend>
+      <%= @paginator.resource %>
+    </legend>
+    <div class="control-group">
+      <%= f.label :paginate, "Кол-во элементов:" %>
+      <div class="controls">
+        <%= f.text_field :paginate, :class => "textfield-paginate" %>  
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Редактировать", :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

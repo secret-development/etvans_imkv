@@ -1,0 +1,72 @@
+<div id="transaction_form">
+  <%= form_for(@transaction, :html => 
+    { :class => "form-horizontal transaction-form-validation" }) do |f| %>
+    <%= error_messages_for(@transaction) %>
+    <fieldset>
+      <legend><%= @transaction.legend %></legend>
+      <div class="control-group">
+        <%= f.label :typetransaction_id, "Тип сделки:" %>
+        <div class="controls">
+          <%= f.collection_select(:typetransaction_id, Typetransaction.all, 
+                                  :id, :name) %>
+        </div>
+        <div>
+          <% @customer = @transaction.customer if @customer.nil? %>
+          <%= f.hidden_field :customer_id, :value => @customer.id %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :name, "Название:" %>
+        <div class="controls">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, "Описание:" %>
+        <div class="controls">
+          <%= f.text_area :description, :rows => "8", :class => "span4" %>
+        </div>
+      </div>
+      <% if current_user.role? %>
+      <div class="control-group">
+        <%= f.label :user_id, "Ответственный" %>
+        <div class="controls">
+          <%= f.collection_select(:user_id, User.all, :id, :lastname) %>
+        </div>
+      </div>
+      <%= f.hidden_field :admin, :value => true %>
+      <% else %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :admin, :value => false %>
+      <% end %>
+      <div class="control-group">
+        <%= f.label :subject_id, "Объект сделки:" %>
+        <div class="controls">
+          <% if @customer.subjects.size > 0 %>
+            <%= f.collection_select(:subject_id, @customer.subjects, 
+                                    :id, :address, :include_blank => true) %>
+          <% else %>
+            <span class="curve">Отсутствует</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :price, "Сумма:" %>
+        <div class="controls">
+          <%= f.text_field :price %>
+          <%= f.select :price_currency, @transaction.price_cur %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :payment, "Оплачена:" %>
+        <div class="controls">
+          <%= f.check_box :payment %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit @transaction.button_value, :class => "btn btn-primary" %>
+        <button-type="reset" class="btn cancel-form">Отмена</button>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

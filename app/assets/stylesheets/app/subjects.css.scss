@@ -1,0 +1,312 @@
+#show-subject-page{
+  background:#F9F9F9;
+  padding:10px;
+  border:1px solid #eee;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  -o-border-radius:5px;
+  font-size:15px;
+  color:#111111;
+  .subject-info{
+    float:left;
+    width:450px;
+    .field-subject{
+      margin-bottom:12px;
+      .title-field-subject{
+        display: inline-block;
+        min-width:180px;
+        color:#8B8B8B;
+      }
+    }
+  }
+  .subject-photos{
+    float:left;
+    margin-left:20px;
+    width:400px;
+    #main-subject-photo{
+      img{
+        border:1px solid #ccc;
+      }
+    }
+    #subject-photos-thumbs{
+      margin-top:10px;
+      margin-bottom:10px;
+      a{
+        border:1px solid #ccc;
+        display:block;
+        float:left;
+        margin:0px 2.3px 10px 2.3px;
+        img{
+          height:45px;
+          width:60px;
+        }
+        &:hover{
+          border:1px solid #000000;
+        }
+      }
+    }
+  }
+  .actions-with-subject{
+    clear:both;
+    margin:50px 0px 10px 0px;
+    a{
+      margin-right:7px;
+    }
+  }
+}
+
+form{
+  // for district
+  .district-operations{
+    // margin-top:15px;
+    .title{
+      color:#6F6F6F;
+      margin:15px 0px 5px 0px;
+      font-size:11px;
+    }
+  }
+  #add-district-button{
+    float:left;
+  }
+  #back-district-select{
+    display:none;
+    margin-left:10px;
+  }
+  #f-subject-note{
+    // border:1px solid #ccc;
+    margin-top:-10px;
+  }
+}
+
+// photos:
+#add-photo-button-form{
+  float:left;
+  min-width:200px;
+  margin-bottom:20px;
+  margin-top:20px;
+  margin-right:100px;
+}
+#photos{
+  float:left;
+  margin-top:20px;
+  width:55%;
+  h1{
+    font-weight:normal;
+    margin-bottom:20px;
+  }
+}
+.photo-subject{
+  margin-bottom:10px;
+  float:left;
+  margin-right:10px;
+  min-width:160px;
+  min-height:110px;
+  .self-photo{
+    img{
+      width:140px;
+      height:100px;
+    }
+    a{
+      margin-left:2px;
+    }
+  }
+}
+#back-to-subject{
+  clear:both;
+  margin-top:50px;
+}
+#subject-photo-complete-msg{
+  display:none;
+}
+#floor-subject-block{
+  display:none;
+}
+#room-subject-block{
+  display:none;
+}
+
+// address
+#ad-street{
+  width:110px;
+}
+#ad-house{
+  width:40px;
+}
+#ad-flat{
+  width:40px;
+}
+.address-fields{
+  input{
+    margin-right:5px;
+  }
+}
+
+// properties
+#properties-info{
+  border-top:1px solid #eee;
+  padding-top:15px;
+  margin-top:20px;
+  h5{
+    font-weight:normal;
+    font-size:15px;
+    color:#828282;
+    padding:0px;
+    margin-bottom:15px;
+  }
+  .field-property{
+    color:#111111;
+    font-size:12px;
+    margin-bottom:5px;
+    .title-field-property{
+      display: inline-block;
+      min-width:180px;
+      color:#8B8B8B;
+    }
+  }
+}
+// price currency
+#subject_price_currency{
+  width:80px;
+}
+// links type subject
+.links-type-subjects{
+  float:right;
+  margin-top:5px;
+  margin-bottom:30px;
+  a{
+    text-decoration:underline;
+    margin-left:25px;
+    font-size:18px;
+    color:#626262;
+    &:hover{
+      color:#858585;  
+    }
+  }
+}
+#subjects_table th .current{
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#subjects_table th .asc { 
+  background-image: url(sort_asc.png);
+}
+#subjects_table th .desc { 
+  background-image: url(sort_desc.png); 
+}
+
+// guest:
+#guest-deny{
+  padding:15px;
+  border:1px solid #ccc;
+  margin-top:-30px;
+  .guest-title{
+    font-size:22px;
+    margin-bottom:20px;
+    font-weight:normal;
+  }
+  .guest-subject{
+    .subject-info{
+      float:left;
+      width:450px;
+      .field-subject{
+        margin-bottom:12px;
+        .title-field-subject{
+          display: inline-block;
+          min-width:180px;
+          color:#8B8B8B;
+        }
+      }
+    }
+    .subject-photos{
+      float:left;
+      margin-left:20px;
+      width:400px;
+      #main-subject-photo{
+        img{
+          border:1px solid #ccc;
+        }
+      }
+      #subject-photos-thumbs{
+        margin-top:10px;
+        margin-bottom:10px;
+        a{
+          border:1px solid #ccc;
+          display:block;
+          float:left;
+          margin:0px 2.3px 10px 2.3px;
+          img{
+            height:45px;
+            width:60px;
+          }
+          &:hover{
+            border:1px solid #000000;
+          }
+        }
+      }
+    }
+  }
+}
+#guest-deny-window{
+  display:none;
+  input{
+    width:500px;
+  }
+}
+// residents:
+#resident-block{
+  display:none;
+  .resident-operations{
+    // margin-top:15px;
+    .title{
+      color:#6F6F6F;
+      margin:15px 0px 5px 0px;
+      font-size:11px;
+    }
+  }
+  #add-resident-button{
+    float:left;
+  }
+  #back-resident-select{
+    display:none;
+    margin-left:10px;
+  }
+}
+.icon-trans-status{
+  display: inline-block;
+  margin-right:5px;
+}
+.subject-note{
+  background:#ffffff;
+  border:1px solid #eee;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  -o-border-radius:10px;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Для Firefox */
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Для Safari и Chrome */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Параметры тени */
+  padding: 15px;
+  margin: 15px 15px 25px 0px;
+  width: 400px;
+  line-height: 1.5;
+}
+.for-status-subject{
+  margin-left:5px;
+  img{
+    position:relative;
+    top:3px;
+  }
+}
+.photo-list{
+  // border:1px solid #ccc;
+  i{
+    margin-left:10px;
+  }
+}
+#subject_note{
+  width:350px;
+  height:150px;
+}

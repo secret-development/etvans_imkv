@@ -1,0 +1,55 @@
+<h1 class="title-page">Персонал</h1>
+<%= flash_msg(flash[:notice]) %>
+<table class="table table-striped">
+  <thead>
+    <th>Имя</th>
+    <th>Последний визит</th>
+    <th>Статус</th>
+    <th>Уровень доступа</th>
+    <th>Действия</th>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+    <tr>
+      <td><%= u.lastname %> <%= u.firstname %></td>
+      <td>
+        <% if isset_last_sign_in(u.last_sign_in_at) %>
+          Работник еще не входил в систему
+        <% else %>
+          <%= to_datetime(u.last_sign_in_at) %>
+        <% end %> 
+
+      </td>
+      <td>
+        <% if u.fired == true %>
+          <div class="user-fired">
+            Уволен
+          </div>
+        <% else %>
+          <div class="user-not-fired">
+            Работает
+          </div>
+        <% end %>
+      </td>
+      <td>
+        <%= level_access(u) %>
+      </td>
+      <td class="actions-buttons">
+        <%= link_to eye_icon, user_path(u) %>
+        <% if can? :update, @users %>  
+          <%= link_to edit_icon, edit_user_path(u) %>
+        <% end %>
+        <% if can? :destroy, @users %>  
+        <%= link_to delete_icon, user_path(u), method: :delete, confirm: "Вы уверены?", :title => "Уволить"  %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-actions">
+<% if can? :create, @users %>  
+  <%= link_to 'Создать нового сотрудника', new_user_path, :class => "btn"  %> <br />
+<% end %>
+</div>
+

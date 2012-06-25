@@ -1,0 +1,41 @@
+<div id="show-users">
+  <h1 class="title-page">
+    Информация о сотруднике
+  </h1>
+  <div class="info-user">
+    <div class="user-name">
+      <span class="user-name-title">Фамилия:</span> <%= @user.lastname %>
+    </div>
+    <div class="user-name">
+      <span class="user-name-title">Имя:</span> <%= @user.firstname %>
+    </div>
+  </div>
+  <div class="contacts-user-title">Контактная информация:</div>
+  <div class="info-user">
+    <div class="field-info-user">
+      <span>E-mail:</span>
+      <%= @user.email %>
+    </div>
+    <div class="field-info-user">
+      <span>Домашний телефон:</span>
+      <%= @user.phonehome %>  
+    </div>
+    <div class="field-info-user">
+      <span>Сотовый телефон:</span>
+      <%= @user.phonemobile %>
+    </div>
+    <div class="field-info-user">
+      <span>Уровень доступа:</span>
+      <%= level_access(@user) %>
+    </div>
+  </div>
+
+  <% if current_user.id == @user.id || current_user.role? %>  
+    <div class="actions-users">
+      <%= link_to icon_edit + ' Изменить профиль', add_info_user_path(@user),
+          :class => "btn"%>
+      <%= link_to icon_lock_black + ' Изменить пароль', 
+            edit_user_path(@user), :class => "btn" %>
+    </div>
+  <% end %>
+</div>

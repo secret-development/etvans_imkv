@@ -1,0 +1,14 @@
+.active-report-tab{
+  background:#7D7D7D;
+  -webkit-border-radius:4px 4px 0 0;
+  -moz-border-radius:4px 4px 0 0;
+  border-radius:4px 4px 0 0;
+  -o-border-radius:4px 4px 0 0;
+  a{
+    color:#fff;
+    &:hover{
+      background:none !important;
+      border-color:#7D7D7D !important;
+    }
+  }
+}

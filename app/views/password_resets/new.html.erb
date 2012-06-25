@@ -1,0 +1,16 @@
+<%= form_tag(password_resets_path, :method => :post, :class => "well form-inline", :id => "send-to-email") do %>
+  <fieldset>
+  <%= flash_msg(flash[:notice]) %>
+  <legend>Восстановление пароля</legend>
+  <div class="control-group">
+  <div class="controls">
+    <%= email_field_tag :email, params[:email], :placeholder => "Введите ваш почтовый адрес ..." %>
+  </div>
+  </div>
+  <div class="form-actions">
+  <%= submit_tag 'Восстановить', :class => "btn" %>
+  <button type="reset" class="btn cancel-form">Назад</button>
+  </div>
+  </fieldset>
+<% end %>
+

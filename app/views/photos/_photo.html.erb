@@ -1,0 +1,7 @@
+<div class="photo-subject">
+  <div class="self-photo" id="photo_<%= photo.id %>">
+    <%= image_tag(photo.image_url.to_s) if photo.image? %>
+    <%= link_to delete_icon, subject_photo_path(@subject, photo), 
+        :method => :delete, :remote => :true, :title => "Удалить" %>
+  </div>
+</div>

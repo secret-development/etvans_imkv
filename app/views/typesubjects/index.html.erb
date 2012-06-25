@@ -1,0 +1,33 @@
+<h1 class="title-page">
+  <%= link_to "Настройки", settings_path %> → Типы недвижимости
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<%= link_to plus_icon + "Добавить" , new_typesubject_path, 
+    :class => "btn button-add" %>
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>ЖК важен?</th>
+      <th>Этажность важна?</th>
+      <th>Количество комнат?</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @typesubjects.each do |t| %>
+      <tr>
+        <td><%= t.name %></td>
+        <td><%= t.resident == true ? "Да" : "Нет" %></td>
+        <td><%= t.floor == true ? "Да" : "Нет" %></td>
+        <td><%= t.room == true ? "Да" : "Нет" %></td>
+        <td class="actions-buttons">
+          <%= link_to edit_icon, edit_typesubject_path(t) %>
+          <%= link_to delete_icon, t, :method => :delete,
+                      :confirm => "Вы уверены?" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h1 class="warning-city">Осторожно! При удалении типа недвижимости, все объекты недвижимости относящиеся к этому типу автоматически удалятся!</h1>

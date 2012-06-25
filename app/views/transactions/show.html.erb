@@ -1,0 +1,82 @@
+<h1 class="title-page"><%= link_to "Сделки", transactions_path %> → Информация о сделке</h1>
+<%= flash_msg(flash[:notice]) %>
+<div id="show-transaction">
+  <h6>Сделка № <%= @transaction.id %></h6>
+  <div class="field-transaction">
+    <span class="title-field"><b>Сделка:</b></span>
+    <b><%= @transaction.name %></b>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field"><b>Тип сделки:</b></span>
+    <b><%= @transaction.typetransaction.name %></b>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field"><b>Оплата:</b></span>
+    <b><%= @transaction.payment_value %></b>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Ответственный:</span>
+    <% if @transaction.user_id == nil %>
+      Отсутствует
+    <% else %>      
+      <%= link_to(@transaction.user.fullname, user_path(@transaction.user)) %>  
+    <% end %>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Клиент:</span>
+    <%= link_to(@transaction.customer.fullname,
+                customer_path(@transaction.customer)) %>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Объект сделки:</span>
+    <% if @transaction.subject == nil %>
+      Отсутствует
+    <% else %>
+      <%= link_to(@transaction.subject.address,
+          subject_path(@transaction.subject)) %>
+    <% end %>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Сумма:</span>
+    <%= price_currency(@transaction) %>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Дата:</span>
+    <%= to_formatted_date(@transaction.created_at) %>
+  </div>
+  <div class="field-transaction">
+    <span class="title-field">Описание сделки:</span>
+  </div>
+  <div class="transaction-desc">
+    <%= raw @transaction.description %>
+  </div>
+  <% unless @transaction.documents.size == 0 %>
+   <h8><%= link_to "Прикрепленные документы:",
+                    add_document_transaction_path(@transaction) %></h8>
+  <div class="doc-field">
+    <% @transaction.documents.each do |d| %>
+      <div class="document-image">
+        <%= image_tag(d.detect_format) %>
+        <span class="document-name"> 
+          <%= link_to d.doc_identifier, d.doc_url %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="clear"></div>
+  <div class="actions-with-transaction">
+    <% if current_user.role? || @transaction.user_id == current_user.id %>
+    <%= link_to edit_icon + " Редактировать",
+        edit_transaction_path(@transaction), 
+        :class => "btn" %>
+    <%= link_to delete_icon + " Удалить",
+        @transaction, :method => :delete,
+        :confirm => "Вы уверены?",
+        :class => "btn" %>
+    <% end %>
+    <%= link_to list_icon + " Прикрепить документ", 
+        add_document_transaction_path(@transaction), 
+        :class => "btn" %>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<h1 class="title-page">
+  <%= link_to "Настройки", settings_path %> → Дополнительные поля объектов
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<%= link_to plus_icon + " Добавить" , new_condition_field_path, 
+    :class => "btn button-add" %>
+<% @typesubjects.each do |t| %>
+  <table class="table table-bordered table-striped table-condensed cv-table">
+    <thead>
+      <tr class="valuefield-typesubject-title">
+        <th colspan="3">
+          <%= t.name %>
+          <div class="value-title-in-table">
+            <%= link_to "Значения", value_fields_path+"##{t.id}", 
+              :target => "_blank" %>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Поле</th>
+        <th>Тип поля</th>
+        <th>Действия</th>
+      </tr>
+      <% t.condition_fields.each do |c| %>
+        <tr>
+          <td><%= c.namefield %></td>
+          <td><%= c.typefield %></td>
+          <td class="actions-buttons">
+            <%= link_to edit_icon, edit_condition_field_path(c) %>
+            <%= link_to delete_icon, c, :method => :delete, 
+                :confirm => "Вы уверены?" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

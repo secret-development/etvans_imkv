@@ -1,0 +1,190 @@
+@mixin rounded-top{
+  -webkit-border-radius:5px 5px 0px 0px;
+  -moz-border-radius:5px 5px 0px 0px;
+  border-radius:5px 5px 0px 0px;
+  -o-border-radius:5px 5px 0px 0px;
+}
+@mixin rounded-bottom{
+  -webkit-border-radius:0px 0px 5px 5px;
+  -moz-border-radius:0px 0px 5px 5px;
+  border-radius:0px 0px 5px 5px;
+  -o-border-radius:0px 0px 5px 5px;
+}
+@mixin rounded{
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  -o-border-radius:5px;
+}
+#search-page{
+  #search-die{
+    background:#FDFDFD;
+    border:1px solid #eee;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    -o-border-radius:10px;
+    margin-bottom:15px;
+    #search-main-form{
+      margin-top:35px;
+      margin-left:20px;
+      margin-right:20px;
+      .s-group-field{
+        clear:both;
+        height:35px;
+        margin-bottom:40px;
+        .s-field{
+          margin-right:50px;
+          float:left;
+          label{
+            float:left;
+            margin-right:10px;
+            font-size:14px;
+            margin-top:5px;
+          }
+          select{
+            width:120px;
+          }
+          .price-search-field{
+            width:70px;
+          }
+          .room-search-field{
+            width:25px;
+          }
+          .floor-search-field{
+            width:25px;
+          }
+          #search_price_currency_eq{
+            width:120px;
+          }
+          .area-search-field{
+            width:50px;
+          }
+        }
+      }
+      .s-action{
+        clear:both;
+        margin-top:-20px;
+        text-align:center;
+      }
+    }
+  }
+  #subjects-results{
+    clear:both;
+    .subjects-results-title{
+      font-size:20px;
+      font-weight:normal;
+      margin-bottom:10px;
+    }
+    #sort-search-subjects{
+      margin-bottom:30px;
+      .sort-search-title{
+        display: inline-block;
+        margin-right:10px;
+      }
+    }
+    .sub-one{
+      margin-bottom:20px;
+      // border:1px solid #ccc;
+      min-height:140px;
+      .photo-sub{
+        // border:1px solid #ccc;
+        float:left;
+        position:relative;
+        margin-right:20px;
+        .overimage{
+          position:absolute;
+          top:50px;
+          padding:3px 5px;
+          left:0;
+          width:140px;
+          height:39px;
+          color:#FFFFFF;
+          font-size:11px;
+          background: rgb(0, 0, 0); /* fallback color */
+          background: rgba(0, 0, 0, 0.6);
+          font-weight:bold;
+          .overimage-field{
+            display: block;
+            margin-bottom:1px;
+          }
+        }
+        img{
+          height:95px;
+          width:150px;
+          box-shadow: 0 0 6px #8F8F8F;
+          box-shadow: 0 0 6px rgba(0,0,0,0.4);
+          -moz-box-shadow: 0 0 6px rgba(0,0,0,0.4);
+          -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.4);
+          @include rounded-top;
+          &:hover{
+            box-shadow: 0 0 5px black;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          }
+        }
+      }
+      .info-about-subject{
+        float:left;
+        width:80%;
+        min-height:130px;
+        margin-left:5px;
+        .main-info-about-subject{
+          font-size:13px;
+          .info-price-subject{
+            display: inline-block;
+          }
+          .room-subject-title{
+            display: inline-block;
+            border-left:1px solid #4E4E4E;
+            padding-left:10px;
+            margin-left:4px;
+          }
+          .active-sub{
+            @include rounded;
+            background:#E9F5F8;
+            padding:5px 5px 5px 10px;
+          }
+          .inactive-sub{
+            @include rounded;
+            background:#F8DBDB;
+            padding:5px 5px 5px 10px;
+          }
+          a{
+            color:#000;
+            text-decoration:underline;
+            &:hover{
+              text-decoration:none;
+            }
+          }
+        }
+        .other-info-subject{
+          // border:1px solid #ccc;
+          padding:6px;
+          // height:100px;
+          .field-other{
+            font-size:11px;
+            margin-bottom:-1px;
+          }
+          .advanced-info{
+            margin-bottom:5px;
+            font-size:11px;
+          }
+        }
+      }
+    }
+  }
+}
+.small-field-subject{
+  font-size:11px !important;
+}
+#room-search-block{
+  display: none;
+}
+#floor-search-block{
+  display:none;
+}
+#resident-search-block{
+  display: none;
+}

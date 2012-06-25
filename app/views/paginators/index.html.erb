@@ -1,0 +1,19 @@
+<h1 class="title-page">
+  <%= link_to "Настройки", settings_path %> → Постраничный вывод
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<div class="paginator-settings">
+  <% @paginators.each do |p| %>
+    <div class="one-paginator">
+      <span class="paginator-resource">
+        <%= p.resource %>:  
+      </span>
+      <span class="paginator-paginate">
+        <%= p.paginate %> элементов на страницу
+      </span>
+      <span class="paginator-actions">
+        <%= link_to edit_icon, edit_paginator_path(p), :title => "Редактировать" %>
+      </span>
+    </div>
+  <% end %>
+</div>

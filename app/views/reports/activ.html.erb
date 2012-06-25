@@ -1,0 +1,8 @@
+<%= flash_msg(flash[:notice]) %>
+<%= form_tag(activ_reports_path, :method => 'get') do %>
+  <%= label_tag :period, "Период" %>
+  <%= select_tag :period, options_for_select(ApplicationHelper::MONTH) %>
+  <%= label_tag :agent, "Агент" %>
+  <%= collection_select(:agent, :agent_id, User.all, :id, :fullname) %>
+  <%= submit_tag 'Построить диаграмму', :class => "btn" %>    
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for(@conditionfield, :html => 
+  {:class => "form-horizontal condition-field-form-validation"}) do |f| %>
+  <%= error_messages_for(@conditionfield) %>
+  <fieldset>
+    <legend><%= @conditionfield.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :typesubject_id, "Тип объекта:" %> 
+      <div class="controls">
+        <%= collection_select(:condition_field, :typesubject_id,
+            Typesubject.all, :id, :name) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :namefield, "Название поля:" %>
+      <div class="controls">
+        <%= f.text_field :namefield, :placeholder => "Мебель..." %>  
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :typefield, "Тип поля:" %>
+      <div class="controls">
+        <%= f.select :typefield, @conditionfield.typefields %>
+        <%= link_to "Что такое тип поля?", "/assets/app/inputs-conditions.png", :id => "what-type-input" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit @conditionfield.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

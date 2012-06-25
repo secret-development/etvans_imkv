@@ -1,0 +1,42 @@
+<div id="settings">
+  <h1 class="title-page">Настройки</h1>
+  <ul id="settings-list">
+    <li>
+      <%= link_to "Список городов", cities_path, 
+          :class => "city-icon" %>
+    </li>
+    <li class="paginator-icon">
+      <%= link_to "Постраничный вывод", paginators_path, 
+          :class => "paginator-icon" %>
+    </li>
+    <li class="worktime-icon">
+      <%= link_to "Рабочее время", worktimes_path, :class => "worktime-icon" %>
+    </li>
+    <li class="customers-s-icon">
+      <%= link_to "Доступ к клиентам", customeraccesses_path, :class => "customers-s-icon" %>
+    </li>
+    <li>
+      <%= link_to "Типы недвижимости", typesubjects_path,
+          :class => "typeobject-icon" %>
+    </li>
+    <li class="condition-icon">
+      <%= link_to "Доп.поля для недвижимости", condition_fields_path,
+          :class => "condition-icon" %>
+    </li>
+    <li class="values-icon">
+      <%= link_to "Значения доп.полей", value_fields_path,
+          :class => "values-icon" %>
+    </li>
+    <li>
+      <%= link_to "Социальные статусы клиентов", social_statuses_path,
+          :class => "socialstatus-icon" %>
+    </li>
+    <li class="district-icon">
+      <%= link_to "Районы", districts_path, :class => "district-icon" %>
+    </li>
+    <li class="resident-icon">
+      <%= link_to "Жилые комплексы", residents_path, :class => "resident-icon" %>
+    </li>
+    <div class="clear"></div>
+  </ul>  
+</div>

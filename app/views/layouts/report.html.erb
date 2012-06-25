@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/topmenu' %>
+  <div class="container" id="main-wrapper">
+      <h1 class="title-page">Отчеты</h1>
+    <div class="row">
+      <div class="span12 reports-content" id="content">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li><%= link_to 'Финансы', finance_reports_path  %></li>
+            <li><%= link_to 'Активность сотрудников', activ_reports_path  %></li>
+            <li><%= link_to 'Общие сведения', general_reports_path %></li>
+          </ul> 
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12" id="footer">
+        <address class="pull-right">
+          <a href="http://etvans.com">
+            Etvans.com
+          </a>
+           &copy; 2012
+        </address>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

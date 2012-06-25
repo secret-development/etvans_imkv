@@ -1,0 +1,49 @@
+<div id="task_form">
+  <%= form_for(@task, :html => 
+    {:class => "form-horizontal task-form-validation"}) do |f| %>
+    <%= error_messages_for(@task) %>
+    <fieldset>
+      <legend><%= @task.legend %></legend>
+      <div class="control-group">
+        <%= f.label :title, "Название:" %>
+        <div class="controls">
+          <%= f.text_field :title %>  
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, "Описание:" %>
+        <div class="controls"> 
+          <%= f.text_area :description, :rows => "8", :class => "span4" %>  
+        </div>
+      </div>
+      <% if current_user.role? %>
+      <div class="control-group">
+        <%= f.label :user_id, "Ответственный" %>
+        <div class="controls">
+          <%= f.collection_select(:user_id, User.all, :id, :lastname) %>
+        </div>
+      </div>
+      <%= f.hidden_field :admin, :value => true %>
+      <% else %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :admin, :value => false %>
+      <% end %>
+      <div class="control-group">
+        <%= f.label :deadline, "Дедлайн:" %>
+        <div class="controls">
+          <%= f.text_field :deadline %>
+            <script type="text/javascript">
+              //<![CDATA[
+    jQuery(document).ready(function(){$('#task_deadline').datetimepicker({})});
+          //]]>
+            </script>
+        </div>
+      </div>
+      <%= f.hidden_field :done, :value => false %>
+      <div class="form-actions">
+        <%= f.submit @task.button_value, :class => "btn btn-primary" %>
+        <button type="reset" class="btn cancel-form">Отмена</button>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

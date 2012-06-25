@@ -1,0 +1,15 @@
+<div class="document-transaction">
+  <div class="self-document" id="document_<%= document.id %>">
+    <div class="document-image">
+      <%= image_tag(document.detect_format) if document.doc? %>
+      <span class="document-name">
+        <%= document.doc_identifier %>
+      </span>
+      <span class="document-delete">
+        <%= link_to delete_icon, 
+            transaction_document_path(@transaction, document), 
+            :method => :delete, :remote => :true, :title => "Удалить" %>
+      </span>
+    </div>
+  </div>
+</div>

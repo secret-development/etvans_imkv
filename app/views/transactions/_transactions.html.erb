@@ -1,0 +1,144 @@
+<table class="table table-striped table-condensed transactions" id="transactions_table">
+  <thead>
+    <tr>
+      <th><%= sortable "id", "№" %></th>
+      <th><%= sortable "name", "Сделка" %></th>
+      <th><%= sortable "typetransaction_id", "Тип сделки" %></th>
+      <th><%= sortable "user_id", "Ответственный" %></th>
+      <th><%= sortable "customer_id", "Клиент" %></th>
+      <th><%= sortable "created_at", "Дата" %></th>
+      <th>Объект сделки</th>
+      <th><%= sortable "price", "Сумма" %></th>
+      <th>Оплата</th>
+      <th>Операции</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |t| %>
+      <tr>
+        <% if current_user.role? %>
+          <td class="id-table">
+            <%= t.id %>
+          </td>
+          <td class="id-table">
+            <%= link_to t.name, t %>
+          </td>
+          <td class="id-table">
+            <%= t.typetransaction.name %>
+          </td>
+          <td>
+            <% if t.user_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= link_to t.user.lastname, user_path(t.user) %>
+            <% end %>
+          </td>
+          <td>
+            <% if t.customer_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= link_to t.customer.lastname, customer_path(t.customer) %>  
+            <% end %>
+          </td>
+          <td class="id-table">
+            <%= to_formatted_date(t.created_at) %>
+          </td>
+          <td class="id-table">
+            <% if t.subject_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= t.subject.address %>
+            <% end %>
+          </td>
+          <td class="id-table"><%= price_currency(t) %></td>
+          <td>
+            <div class="btn-group">
+              <a class="btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+                <%= t.payment_short %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to "Сделка не оплачена", transaction_path(t, 
+                            :transaction => { :payment => false }),
+                            :method => :put, 
+                            :confirm => "Вы уверены?" %>
+                <%= link_to "Сделка оплачена", transaction_path(t, 
+                            :transaction => { :payment => true}),
+                            :method => :put, 
+                            :confirm => "Вы уверены?" %>
+              </ul>
+            </div>
+        </td>
+        <td class="actions-buttons">
+          <%= link_to eye_icon, transaction_path(t), :title => "Просмотр" %>
+          <%= link_to edit_icon, edit_transaction_path(t), 
+              :title => "Редактировать" %>
+          <%= link_to delete_icon, t, :method => :delete,
+                      :confirm => "Вы уверены?" %>
+        </td>
+        <% elsif t.user_id == current_user.id %>
+          <td class="id-table">
+            <%= t.id %>
+          </td>
+          <td class="id-table">
+            <%= link_to t.name, t %>
+          </td>
+          <td class="id-table">
+            <%= t.typetransaction.name %>
+          </td>
+          <td>
+            <% if t.user_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= link_to t.user.lastname, user_path(t.user) %>
+            <% end %>
+          </td>
+          <td>
+            <% if t.customer_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= link_to t.customer.lastname, customer_path(t.customer) %>  
+            <% end %>
+          </td>
+          <td class="id-table">
+            <%= to_formatted_date(t.created_at) %>
+          </td>
+          <td class="id-table">
+            <% if t.subject_id == nil %>
+              Отсутствует
+            <% else %>
+              <%= t.subject.address %>
+            <% end %>
+          </td>
+          <td class="id-table"><%= to_dollar(t) %></td>
+          <td>
+            <div class="btn-group">
+              <a class="btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+                <%= t.payment_short %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to "Сделка не оплачена", transaction_path(t, 
+                            :transaction => { :payment => false }),
+                            :method => :put, 
+                            :confirm => "Вы уверены?" %>
+                <%= link_to "Сделка оплачена", transaction_path(t, 
+                            :transaction => { :payment => true}),
+                            :method => :put, 
+                            :confirm => "Вы уверены?" %>
+              </ul>
+            </div>
+          </td>
+          <td class="actions-buttons">
+            <%= link_to eye_icon, transaction_path(t), :title => "Просмотр" %>
+            <%= link_to edit_icon, edit_transaction_path(t), 
+                :title => "Редактировать" %>
+            <%= link_to delete_icon, t, :method => :delete,
+                        :confirm => "Вы уверены?" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @transactions %>

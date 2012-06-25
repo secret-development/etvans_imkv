@@ -1,0 +1,100 @@
+<%= form_for(@customer, 
+  :html => { :class => "form-horizontal customer-form-validation"}) do |f| %>
+  <%= error_messages_for(@customer) %>
+  <fieldset>
+    <legend><%= @customer.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :typetransaction_id, "Тип сделки:" %>
+      <div class="controls">
+        <%= collection_select(:customer, :typetransaction_id, 
+            Typetransaction.all, :id, :name) %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :lastname, "Фамилия:" %>
+      <div class="controls">
+        <%= f.text_field :lastname, :placeholder => "Иванов "%>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :firstname, "Имя:" %>
+      <div class="controls">
+        <%= f.text_field :firstname, :placeholder => "Иван "%>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :phonehome, "Домашний телефон:" %>
+      <div class="controls">
+        <%= f.text_field :phonehome %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :phonemobile, "Сотовый телефон:" %>
+      <div class="controls">
+        <span class="phone-area-start">+7</span>
+        <%= f.text_field :area_code, :id => "area_code", :maxlength => 3,
+            :class => "input-mphone", :placeholder => "775" %> - 
+        <%= f.text_field :phonemobile1, :id => "phonemobile1", 
+            :maxlength => 3, :class => "input-mphone", :placeholder => "674"%> - 
+        <%= f.text_field :phonemobile2, :id => "phonemobile2",
+            :maxlength => "4", :class => "input-mphone", 
+            :placeholder => "8724"%>
+        <a class="add-more-phone" title="Дополнительные телефоны">
+          <img src="/assets/app/mobile-phone-icon.png" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="more-phones">
+      <%= f.fields_for :phones do |p| %>
+        <div class="control-group">
+          <%= p.label :customerphone, "Доп.телефон:", 
+              :class => "label-more-phone" %>
+          <div class="controls">
+            <%= p.text_field :customerphone %>
+            <%= p.check_box :_destroy %>
+            <%= p.label :_destroy, "Удалить номер", :class => "label-destroy-more-phone" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="control-group">
+      <%= f.label :email, "Электронный адрес:" %>
+      <div class="controls">
+        <%= f.email_field :email, :placeholder => "example@mail.ru" %>  
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :social_status_id, "Социальный статус клиента:" %>
+      <div class="controls">
+        <%= f.collection_select(:social_status_id, SocialStatus.asctitle, :id, :title) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :potentials, "Потенциальный:" %>
+      <div class="controls">
+        <%= f.check_box :potentials %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :note, "Заметка:" %>
+      <div class="controls">
+        <%= f.text_area :note, :rows => 5, :placeholder => "О клиенте ..." %>
+      </div>
+    </div>
+    <% if @customer.new_record? %>
+      <div class="control-group">
+        <%= f.hidden_field(:lastcall, :value => Time.current) %>
+      </div>
+    <% end %>
+    <%= f.hidden_field(:user_id, :value => current_user.id) %>
+    <div class="form-actions">
+      <%= f.submit @customer.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

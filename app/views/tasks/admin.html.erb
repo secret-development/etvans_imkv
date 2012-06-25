@@ -1,0 +1,19 @@
+<h1 class="title-page"><%= @title %></h1>
+<%= flash_msg(flash[:notice]) %>
+
+<%= link_to plus_icon + 'Добавить', new_task_path, 
+    :class => "btn button-add"  %>
+<% if current_user.role? %>
+  <%= render 'links_tasks' %>
+<% end %>
+
+<%= form_tag(admin_tasks_path, :method => 'get', :id => 'tasks_search')  do %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= text_field_tag :search, params[:search], 
+                    :placeholder => "Поиск ...", 
+                    :class => "span3" %>
+    <div id="task">
+      <%= render 'tasks' %>
+    </div>
+<% end %>

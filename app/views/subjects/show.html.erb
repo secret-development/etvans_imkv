@@ -1,0 +1,259 @@
+<h1 class="title-page"><%= link_to "Объекты недвижимости", subjects_path %> → Информация об объекте</h1>
+<%= flash_msg(flash[:notice]) %>
+<div id="show-subject-page">
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#1" data-toggle="tab">Основная информация</a>
+      </li>
+      <li class="advanced-li-tab">
+        <a href="#2" data-toggle="tab">
+          Хозяин
+        </a>
+      </li>
+    </ul>
+  </div>  
+  <div class="tab-content">
+    <div class="tab-pane active" id="1">
+      <div class="subject-info">
+        <div class="field-subject">
+          <span class="title-field-subject">Кто добавил:</span>
+          <%= link_to @subject.user.fullname, @subject.user %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject"><b>Хозяин:</b></span>
+          <%= link_to(@subject.customer.fullname, @subject.customer) %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject"><b>Тип объекта:</b></span>
+          <b><%= @subject.typesubject.name %></b>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject"><b>Статус:</b></span>
+          <b><%= active_subject_text?(@subject) %></b>
+          <span class="for-status-subject">
+            <%= active_subject?(@subject) %>
+          </span>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Тип сделки:</span>
+          <%= @subject.typetransaction.name %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Город:</span>
+          <% if have_object?(@subject.city) %>
+            <%= @subject.city.name %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </div>
+        <% if have_object?(@subject.resident) %>
+          <div class="field-subject">
+            <span class="title-field-subject">ЖК:</span>
+            <%= @subject.resident.title %>
+          </div>
+        <% end %>
+        <div class="field-subject">
+          <span class="title-field-subject">Район:</span>
+          <% if have_object?(@subject.district) %>
+            <%= @subject.district.title %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </div>
+        <!-- room -->
+        <% if room?(@subject) %>
+        <div class="field-subject">
+          <span class="title-field-subject">Количество комнат:</span>
+          <%= @subject.room %>
+        </div>
+        <% end %>
+        <!-- end room -->
+        <!-- floor -->
+        <% if floor?(@subject) %>
+        <div class="field-subject">
+          <span class="title-field-subject">Этаж:</span>
+          <%= @subject.floor %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Этажность:</span>
+          <%= @subject.floorall %>
+        </div>
+        <% end %>
+        <!-- end floor -->
+        <div class="field-subject">
+          <span class="title-field-subject">Цена:</span>
+          <%= price_currency(@subject) %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Площадь:</span>
+          <%= to_area(@subject.area) %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Адрес:</span>
+          <%= @subject.address %>
+        </div>
+        <div class="field-subject">
+          <span class="title-field-subject">Добавлен:</span>
+          <%= to_date(@subject.created_at) %>
+        </div>
+        <% unless properties_views_zero?(@subject) %>
+          <div id="properties-info">
+            <h5>
+              Дополнительная информация:
+            </h5>
+            <% @subject.properties.each do |p| %>
+              <div class="field-property">
+                <span class="title-field-property">
+                  <%= p.condition %>:
+                </span>
+                <%= p.value %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="field-subject" id="note-field">
+          <span class="title-field-subject"><b>Заметка</b>:</span>
+          <div class="subject-note">
+            <%= isset_field(@subject.note) %>  
+          </div>
+        </div>
+      </div>
+      <!-- photos -->
+      <% if @subject.photos.size > 0 %>
+        <div class="subject-photos">
+          <div id="main-subject-photo">
+            <%= link_to(image_tag(@subject.photos.first.image_url(:thumb)), @subject.photos.first.image_url) %>
+          </div>
+          <div id="subject-photos-thumbs">
+            <% @subject.photos.each do |p| %>
+              <%= link_to(image_tag(p.image_url(:thumb)), p.image_url) %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <!--end photos-->
+      <div class="clear"></div>
+      <div class="actions-with-subject">
+        <!-- main actions -->
+        <%= link_to edit_icon,
+            edit_subject_path(@subject), :class => "btn", :title => "Редактировать" %>
+        <%= link_to delete_icon,
+        @subject, :method => :delete, :confirm => "Вы уверены?", :class => "btn", :title => "Удалить" %>
+        <!-- end main actions -->
+        <!-- properties -->
+        <% if properties_views_zero?(@subject) %>
+          <%= link_to icon_info_sign_black + 
+            " Добавить дополнительную информацию",
+            add_properties_subject_path(@subject), :class => "btn" %>
+        <% else %>
+          <%= link_to icon_info_sign_black + 
+            " Редактировать дополнительную информацию",
+            add_properties_subject_path(@subject), :class => "btn" %>
+        <% end %>
+        <!-- end properties -->
+        <%= link_to icon_camera_black + " Добавить фотографии", 
+            add_photo_subject_path(@subject), :class => "btn" %>
+        <div class="modal" id="guest-deny-window">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Скопируйте ссылку</h3>
+          </div>
+          <div class="modal-body">
+            <input type="text" value="<%= guest_subject_url(@subject) %>">
+          </div>
+        </div>
+        <%= link_to "Гостевой доступ", guest_subject_path(@subject), :class => "btn", :id => "guest-deny-button", "data-toggle" => "modal" %>
+      </div>
+    </div>
+    <div class="tab-pane" id="2">
+      <div id="fields-for-customers">
+        <div class="field-customer">
+          <span class="title-field"><b>Тип клиента:</b></span>
+          <span class="typecustomer">
+            <%= type_customer(@subject.customer.potentials) %>
+            <span class="icon-trans-status">
+              <%= customer_act?(@subject.customer) %>  
+            </span>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field"><b>Тип сделки:</b></span>
+          <span class="typetransaction">
+            <%= @subject.customer.typetransaction.name %>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Имя:</span>
+          <%= isset_field(@subject.customer.firstname) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Фамилия:</span>
+          <%= isset_field(@subject.customer.lastname) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Тип сделки:</span>
+          <%= isset_field(@subject.customer.typetransaction.name) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Социальный статус:</span>
+          <% if have_object?(@subject.customer.social_status) %>
+            <%= @subject.customer.social_status.title %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Последний раз обращался:</span>
+          <span id="last-call-value">
+            <%= to_datetime(@subject.customer.lastcall) %>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Добавлен:</span>
+          <%= to_date(@subject.customer.created_at) %>
+        </div>
+        <% if Customer.check_owner(current_user, @subject.customer) %>
+          <!-- contacts -->
+          <div class="field-customer customer-note field-customer-contacts">
+            <div class="field-c-c-title">Контактные данные:</div>
+            <div class="field-customer-c">
+              <span class="title-field">Телефон:</span>
+              <%= isset_field(@subject.customer.phonehome) %>  
+            </div>
+            <div class="field-customer-c">
+              <span class="title-field">Мобильный телефон:</span>
+              <%= isset_field(@subject.customer.phonemobile) %>  
+            </div>
+            <div class="field-customer-c">
+              <span class="title-field">e-mail:</span>
+              <%= isset_mail(@subject.customer.email) %>  
+            </div>
+            <% @subject.customer.phones.each do |p| %>
+              <div class="field-customer-c">
+                <span class="title-field">Доп.телефон:</span>
+                <%= isset_field(p.customerphone) %>  
+              </div>
+            <% end %>
+          </div>        
+          <!-- end contacts -->
+        <% else %>
+          <div class="field-customer customer-note field-customer-contacts">
+            <div class="field-c-c-title">Контактные данные:</div>
+            <div class="field-customer-c">
+              скрыты
+            </div>
+          </div>
+        <% end %>
+        <div class="field-customer">
+          <div class="customer-note">
+            <div class="field-c-c-title">Заметка:</div>
+            <div class="content-customer-note">
+              <%= isset_field(@subject.customer.note) %>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

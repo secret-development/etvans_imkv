@@ -1,0 +1,22 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// about.html.erb
+#about-page{
+  margin:20px;
+  font-size:15px;
+  text-align:justify;
+  p{
+    margin-bottom:15px;
+    text-indent: 10px
+  }
+}
+// contacts.html.erb
+#contacts-page{
+  margin:20px;
+  font-size:15px;
+  p{
+    margin-bottom:10px;
+  }
+}

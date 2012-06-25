@@ -1,0 +1,31 @@
+<h1 class="title-page">
+  <%= link_to "Настройки", settings_path %> → Рабочее время
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<div class="description-work-time">
+  <p>Если вы хотите чтобы система для агентов работала 24 часа в сутки, оставьте поля как "часы" : "минуты" в условиях "Начало работы" и "Конец работы"</p>
+  <p>Не оставляйте поля "часы" : "минуты" пустыми, если вы решили указать рабочее время!</p>
+  <div class="for-agents">
+    Рабочее время можно ограничить только для агентов
+  </div>
+</div>
+<%= form_for(@worktime, :html => {:class => "form-horizontal worktime-form"}) do |f| %>
+  <div class="control-group">
+    <%= f.label :starttime, "Начало работы:" %>  
+    <div class="controls">
+      <%= select("worktime", "start_hour", (0..23).to_a.collect {|p| p}, :include_blank => "Часы") %> :
+      <%= select("worktime", "start_min", (0..59).to_a.collect {|p| p}, :include_blank => "Минуты") %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :starttime, "Конец работы:" %>  
+    <div class="controls">
+      <%= select("worktime", "end_hour", (0..23).to_a.collect {|p| p}, :include_blank => "Часы") %> :
+      <%= select("worktime", "end_min", (0..59).to_a.collect {|p| p}, :include_blank => "Минуты") %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Настроить", :class => "btn btn-primary" %>
+    <button type="reset" class="btn cancel-form">Отмена</button>
+  </div>
+<% end %>

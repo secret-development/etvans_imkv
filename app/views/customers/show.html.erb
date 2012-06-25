@@ -1,0 +1,202 @@
+<h1 class="title-page">
+  <%= link_to "Все клиенты", all_customers_path %> → Информация о клиенте
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<div id="show-customer">
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#1" data-toggle="tab">Основная информация</a>
+      </li>
+      <li class="advanced-li-tab">
+        <a href="#2" data-toggle="tab">
+          Объекты [<%= @customer.subjects.count %>]
+        </a>
+      </li>
+      <li class="advanced-li-tab">
+        <a href="#3" data-toggle="tab">
+          Сделки [<%= @customer.transactions.count %>]
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="1">
+      <div id="fields-for-customers">
+        <div class="field-customer">
+          <span class="title-field">Кто добавил:</span>
+          <%= link_to @customer.user.fullname, @customer.user %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field"><b>Тип клиента:</b></span>
+          <span class="typecustomer">
+            <%= type_customer(@customer.potentials) %>
+            <span class="icon-trans-status">
+              <%= customer_act?(@customer) %>  
+            </span>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field"><b>Тип сделки:</b></span>
+          <span class="typetransaction">
+            <%= @customer.typetransaction.name %>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Имя:</span>
+          <%= isset_field(@customer.firstname) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Фамилия:</span>
+          <%= isset_field(@customer.lastname) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Тип сделки:</span>
+          <%= isset_field(@customer.typetransaction.name) %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Социальный статус:</span>
+          <% if have_object?(@customer.social_status) %>
+            <%= @customer.social_status.title %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Последний раз обращался:</span>
+          <span id="last-call-value">
+            <%= to_datetime(@customer.lastcall) %>
+          </span>
+        </div>
+        <div class="field-customer">
+          <span class="title-field">Добавлен:</span>
+          <%= to_date(@customer.created_at) %>
+        </div>
+        <% if Customer.check_owner(current_user, @customer) %>
+          <!-- contacts -->
+          <div class="field-customer customer-note field-customer-contacts">
+            <div class="field-c-c-title">Контактные данные:</div>
+            <div class="field-customer-c">
+              <span class="title-field">Телефон:</span>
+              <%= isset_field(@customer.phonehome) %>  
+            </div>
+            <div class="field-customer-c">
+              <span class="title-field">Мобильный телефон:</span>
+              <%= isset_field(@customer.phonemobile) %>  
+            </div>
+            <div class="field-customer-c">
+              <span class="title-field">e-mail:</span>
+              <%= isset_mail(@customer.email) %>  
+            </div>
+            <% @customer.phones.each do |p| %>
+              <div class="field-customer-c">
+                <span class="title-field">Доп.телефон:</span>
+                <%= isset_field(p.customerphone) %>  
+              </div>
+            <% end %>
+          </div>        
+          <!-- end contacts -->
+        <% else %>
+          <div class="field-customer customer-note field-customer-contacts">
+            <div class="field-c-c-title">Контактные данные:</div>
+            <div class="field-customer-c">
+              скрыты
+            </div>
+          </div>
+        <% end %>
+        <div class="field-customer">
+          <div class="customer-note">
+            <div class="field-c-c-title">Заметка:</div>
+            <div class="content-customer-note">
+              <%= isset_field(@customer.note) %>  
+            </div>
+          </div>
+        </div>
+        <div class="actions-with-customers">
+          <%= link_to plus_icon_white + " Добавить недвижимость", new_subject_path(:customer_id => @customer.id), :class => "btn btn-primary" %>
+          <%= link_to list_icon + " Заключить сделку",
+              new_transaction_path(:customer_id => @customer.id), 
+              :class => "btn" %>
+          <%= link_to edit_icon + " Редактировать",
+              edit_customer_path(@customer), :class => "btn" %>
+          <%= link_to delete_icon + " Удалить",
+          @customer, :method => :delete, :confirm => "Вы уверены?", :class => "btn" %>        
+        </div>
+      </div>
+      <div id="man-called">
+        <button id="man-called-but" 
+          class="btn" data-customer-id="<%= @customer.id %>">
+          Клиент только что обратился
+        </button>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="tab-pane" id="2">
+      <div id="customers-objects">
+        <% if @subjects.count > 0 %>
+          <% @subjects.each do |subject| %>
+            <div class="customer-object">
+              <h3><%= link_to(subject.typesubject.name, subject) %></h3>
+              <div class="field-obj">
+                <span>Город:</span>
+                <%= subject.city.name %>
+              </div>
+              <div class="field-obj">
+                <span>Район:</span>
+                <% if have_object?(subject.district) %>
+                  <%= subject.district.title %>
+                <% else %>
+                  Отсутствует
+                <% end %>
+              </div>
+              <div class="field-obj">
+                <span>Адресс:</span>
+                <%= subject.address %>
+              </div>
+              <div class="field-obj">
+                <span>Цена:</span>
+                <%= price_currency(subject) %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h1 class="zero-subjects-customer-title">
+            Нет объектов у данного клиента
+          </h1>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane" id="3">
+      <div id="customer-transactions-content">
+        <% if @customer.transactions.size > 0 %>
+          <% @customer.transactions.each do |t| %>
+            <div class="customer-transaction">
+              <h3><%= link_to(t.name, t) %></h3>
+              <div class="field-obj">
+                <span>Ответственный:</span>
+                <%= t.user.fullname %>
+              </div>
+              <div class="field-obj">
+                <span>Тип сделки:</span>
+                <%= t.typetransaction.name %>
+              </div>
+              <div class="field-obj">
+                <span>Объект сделки:</span>
+                <% if t.subject == nil %>
+                  Отсутствует
+                <% else %>
+                  <%= link_to(t.subject.address,
+                      subject_path(t.subject)) %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h1 class="zero-subjects-customer-title">
+            Нет сделок с данным клиентом
+          </h1>        
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

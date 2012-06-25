@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrapper-login">
+    <div id="position-form-login">
+      <%= yield %>
+      <div class="clear"></div>
+    </div>  
+  </div>
+</body>
+</html>

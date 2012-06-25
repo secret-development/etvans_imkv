@@ -1,0 +1,99 @@
+<div id="guest-deny">
+  <h1 class="guest-title">Информация об объекте</h1>
+  <div class="guest-subject">
+    <div class="subject-info">
+      <div class="field-subject">
+        <span class="title-field-subject"><b>Тип объекта:</b></span>
+        <b><%= @subject.typesubject.name %></b>
+      </div>
+      <div class="field-subject">
+        <span class="title-field-subject"><b>Статус:</b></span>
+        <b><%= active_subject_text?(@subject) %></b>
+      </div>
+      <div class="field-subject">
+        <span class="title-field-subject">Тип сделки:</span>
+        <%= @subject.typetransaction.name %>
+      </div>
+      <div class="field-subject">
+        <span class="title-field-subject">Город:</span>
+        <% if have_object?(@subject.city) %>
+          <%= @subject.city.name %>
+        <% else %>
+          Отсутствует
+        <% end %>
+      </div>
+      <% if have_object?(@subject.resident) %>
+        <div class="field-subject">
+          <span class="title-field-subject">ЖК:</span>
+          <%= @subject.resident.title %>
+        </div>
+      <% end %>
+      <div class="field-subject">
+        <span class="title-field-subject">Район:</span>
+        <% if have_object?(@subject.district) %>
+          <%= @subject.district.title %>
+        <% else %>
+          Отсутствует
+        <% end %>
+      </div>
+      <!-- room -->
+      <% if room?(@subject) %>
+      <div class="field-subject">
+        <span class="title-field-subject">Количество комнат:</span>
+        <%= @subject.room %>
+      </div>
+      <% end %>
+      <!-- end room -->
+      <!-- floor -->
+      <% if floor?(@subject) %>
+      <div class="field-subject">
+        <span class="title-field-subject">Этаж:</span>
+        <%= @subject.floor %>
+      </div>
+      <% end %>
+      <!-- end floor -->
+      <div class="field-subject">
+        <span class="title-field-subject">Цена:</span>
+        <%= price_currency(@subject) %>
+      </div>
+      <div class="field-subject">
+        <span class="title-field-subject">Площадь:</span>
+        <%= to_area(@subject.area) %>
+      </div>
+      <div class="field-subject">
+        <span class="title-field-subject">Добавлен:</span>
+        <%= to_date(@subject.created_at) %>
+      </div>
+      <% unless properties_views_zero?(@subject) %>
+        <div id="properties-info">
+          <h5>
+            Дополнительная информация:
+          </h5>
+          <% @subject.properties.each do |p| %>
+            <div class="field-property">
+              <span class="title-field-property">
+                <%= p.condition %>:
+              </span>
+              <%= p.value %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <!-- photos -->
+    <% if @subject.photos.size > 0 %>
+      <div class="subject-photos">
+        <div id="main-subject-photo">
+          <%= link_to(image_tag(@subject.photos.first.image_url(:thumb)), @subject.photos.first.image_url) %>
+        </div>
+        <div id="subject-photos-thumbs">
+          <% @subject.photos.each do |p| %>
+            <%= link_to(image_tag(p.image_url(:thumb)), p.image_url) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <!--end photos-->
+    <div class="clear"></div>
+  </div>
+</div>

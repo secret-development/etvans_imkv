@@ -1,0 +1,19 @@
+<%= form_for @user, :url => password_reset_path(params[:id]), :id => "password-reset" do |f| %>
+  <fieldset>
+  <%= flash_msg(flash[:notice]) %>
+  <legend>Сброс пароля</legend>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :id => 'confirm' %>  
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Изменить', :class => "btn" %>
+  </div>      
+  </fieldset>
+<% end %>

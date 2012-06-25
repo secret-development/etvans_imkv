@@ -1,0 +1,68 @@
+<table class="table table-striped table-condensed customers" id="customers_table">
+  <thead>
+    <tr>
+      <th><%= sortable "id", "№" %></th>
+      <th><%= sortable "typetransaction_id", "Сделка" %></th>
+      <th><%= sortable "lastname", "Фамилия" %></th>
+      <th><%= sortable "firstname", "Имя" %></th>
+      <th><%= sortable "social_status_id", "Соц. статус" %></th>
+      <th>Дом. телефон</th>
+      <th>Сот. телефон</th>
+      <th>Кол-во объектов</th>
+      <th>Добавить объект</th>
+      <th>Заключить сделку</th>
+      <th>Действия</th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @customers.each do |c| %>
+       <tr>
+        <td class="id-table"><%= c.id %></td>
+        <td class="id-table"><%= c.typetransaction.name %></td>
+        <td>
+          <%= link_to(isset_field(c.lastname),c) %>
+        </td>
+        <td><%= link_to(c.firstname, c) %></td>
+        <td class="id-table">
+          <% if have_object?(c.social_status) %>
+            <%= c.social_status.title %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </td>
+        <td class="id-table">
+          <% if Customer.check_owner(current_user, c) %>
+            <%= c.phonehome %>
+          <% else %>
+            скрыт
+          <% end %>
+        </td>
+        <td class="id-table">
+          <% if Customer.check_owner(current_user, c) %>
+            <%= c.phonemobile %>
+          <% else %>
+            скрыт
+          <% end %>
+        </td>
+        <td class="id-table"><%= c.subjects.size %></td>
+        <td>
+          <%= link_to plus_icon, new_subject_path(:customer_id => c.id), :title => "Добавить недвижимость" %>
+        </td>
+        <td class="id-table">
+          <span class="icon-trans-status">
+            <%= customer_act?(c) %>  
+          </span>
+          <%= link_to "Сделка", new_transaction_path(:customer_id => c.id) %>
+        </td>
+        <td class="actions-buttons">
+          <%= link_to eye_icon, customer_path(c), :title => "Подробнее...",
+              :rel => "tooltip" %>
+          <%= link_to edit_icon, edit_customer_path(c) %>
+          <%= link_to delete_icon, c, :method => :delete, :confirm => "Вы уверены?" %>
+        </td>
+        </tr>      
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @customers %>

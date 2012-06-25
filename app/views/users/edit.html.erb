@@ -1,0 +1,48 @@
+<%= form_for(@user, :html => {:class => "form-horizontal", :id => "user-new"}) do |f| %>
+  <fieldset>
+    <%= error_messages_for(@user) %>
+    <legend> <%= @user.legend_password %></legend>
+    
+    <div class="control-group">
+      <%= f.label :email, "Почтовый адрес" %>
+      <div class="controls">
+      <%= f.email_field :email %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :password, @user.label_value %>
+      <div class="controls">
+      <%= f.password_field :password, :id => "password" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, "Повторите пароль" %>
+      <div class="controls">
+      <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+    <% if current_user.role? %>  
+    <div class="control-group">
+      <%= f.label :role, "Администратор" %>
+      <div class="controls">
+      <%= f.check_box :role %>
+      </div>
+    </div>
+    <% else %>
+    <% end %>
+    <div class="control-group">
+      <%= f.label :fired, "Уволен?" %>
+      <div class="controls">
+        <%= select('user', 'fired', [["Да",true],["Нет",false]]) %>
+      </div>
+    </div>
+    <div class="form-actions"> 
+      <%= f.submit @user.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>  
+<% end %>
+<% if can? :update, @user %>
+  <%= link_to 'Изменить анкетные данные', add_info_user_path(@user)  %>
+<% end -%>

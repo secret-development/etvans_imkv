@@ -1,0 +1,117 @@
+<table class="table table-striped table-condensed tasks" id="tasks_table">
+  <thead>
+    <tr>
+      <th><%= sortable "id", "№" %></th>
+      <th><%= sortable "title", "Задача" %></th>
+      <th><%= sortable "user_id", "Ответственный" %></th>
+      <th><%= sortable "deadline", "Дедлайн" %></th>
+      <th><%= sortable "done", "Сделано" %></th>
+      <th><%= sortable "created_at", "Дата постановки" %></th>
+      <th>Операции</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <% if  current_user.role? && task.admin? %>
+        <td class="id-table"><%= task.id %></td>
+        <td><%= link_to task.title, task_path(task) %></td>
+        <td>
+          <% if task.user_id == nil %>
+            Отсутствует
+          <% else %>
+            <%= task.user.lastname %>  
+          <% end %>
+        </td>
+        <td class="id-table"><%= to_datetime(task.deadline) %></td>
+        <% if task.done == false %>
+          <td id="not_done_task"> 
+        <% else %>
+          <td>
+        <% end %>
+          <div class="btn-group">
+            <a class="btn-small dropdown-toggle" 
+              data-toggle="dropdown" href="#">
+              <%= task.status %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if can? :update, task %>
+              <%= link_to "Задача не выполнена", task_path(task, 
+                          :task => { :done => false }),
+                          :method => :put, 
+                          :confirm => "Вы уверены?" %>
+              <%= link_to "Задача выполнена", task_path(task, 
+                          :task => { :done => true}),
+                          :method => :put, 
+                          :confirm => "Вы уверены?" %>
+              <% end %>
+            </ul>
+          </div>
+        </td>
+        <td class="id-table"><%= to_datetime(task.created_at) %></td>
+        <td class="actions-buttons">
+          <%= link_to eye_icon, task_path(task) %>
+          <% if can? :update, task %>
+            <%= link_to edit_icon, edit_task_path(task) %>
+          <% end %>
+          <% if can? :destroy, task %>
+            <%= link_to delete_icon, task, :method => :delete,
+                      :confirm => "Вы уверены?" %>
+          <% end %>
+        </td>
+        <% elsif !current_user.role? && current_user.id == task.user_id %>
+        <td class="id-table"><%= task.id %></td>
+        <td><%= link_to task.title, task_path(task) %></td>
+        <td>
+          <% if task.user_id == nil %>
+            Отсутствует
+          <% else %>
+            <%= task.user.lastname %>  
+          <% end %>
+        </td>
+        <td class="id-table"><%= to_datetime(task.deadline) %></td>
+        <% if task.done == false %>
+          <td id="not_done_task"> 
+        <% else %>
+          <td>
+        <% end %>
+          <div class="btn-group">
+            <a class="btn-small dropdown-toggle" 
+              data-toggle="dropdown" href="#">
+              <%= task.status %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if can? :update, task %>
+              <%= link_to "Задача не выполнена", task_path(task, 
+                          :task => { :done => false }),
+                          :method => :put, 
+                          :confirm => "Вы уверены?" %>
+              <%= link_to "Задача выполнена", task_path(task, 
+                          :task => { :done => true}),
+                          :method => :put, 
+                          :confirm => "Вы уверены?" %>
+              <% end %>
+            </ul>
+          </div>
+
+        </td>
+        <td class="id-table"><%= to_datetime(task.created_at) %></td>
+        <td class="actions-buttons">
+          <%= link_to eye_icon, task_path(task) %>
+          <% if can? :update, task %>
+            <%= link_to edit_icon, edit_task_path(task) %>
+          <% end %>
+          <% if can? :destroy, task %>
+            <%= link_to delete_icon, task, :method => :delete,
+                      :confirm => "Вы уверены?" %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @tasks %>

@@ -1,0 +1,35 @@
+<h1 class="title-page"><%= link_to "Задачи", tasks_path %> → Информация о задаче</h1>
+<div id="show-task">
+  <h6>Задача № <%= @task.id %></h6>
+  <div class="field-task">
+    <span class="title-field">Суть задачи:</span>
+    <%= @task.title %>
+  </div>
+  <div class="field-task">
+    <span class="title-field">Ответственный:</span>
+    <% if @task.user_id == nil %>
+      Отсутствует
+    <% else %>
+      <%= link_to(@task.user.fullname, user_path(@task.user)) %>
+    <% end %>
+  </div>
+  <div class="field-task">
+    <span class="title-field">Дата постановки:</span>
+    <%= to_datetime(@task.created_at) %>
+  </div>
+  <div class="field-task">
+    <span class="title-field">Описание задачи:</span>
+  </div>
+  <div class="task-desc">
+    <%= raw @task.description %>
+  </div>
+  <div class="field-task">
+    <span class="title-field">Дедлайн:</span>
+    <%= to_datetime(@task.deadline) %>
+  </div>
+  <div class="field-task">
+    <span class="title-field">Готово:</span>
+    <%= @task.status %>
+  </div>
+  <div id="clear"></div>
+</div>

@@ -1,0 +1,38 @@
+#wrapper-login{
+  margin-top:-60px;
+  min-height:686px;
+  background-image:url(bg.jpg);
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  
+}
+#position-form-login{
+  padding-top:70px;
+  // border:1px solid #ccc;
+  margin-left:80px;
+  width:50%;
+}
+.remember-me-label{
+  display: inline-block;
+  position:relative;
+  top:3px;
+  left:5px;
+}
+.clear{
+  clear:both;
+}
+#session-new-title{
+  font-size:3.5em;
+  color:#F6F6F6;
+  font-weight:normal;
+  font-family:Helvetica;
+  margin-bottom:50px;
+  text-shadow: 0px 1px 0px #7B7B7B;
+}
+#session-new{
+  label{
+    color:#ddd;
+    margin-bottom:10px;
+    font-size:16px;
+  }
+}

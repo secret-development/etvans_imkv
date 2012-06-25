@@ -1,0 +1,19 @@
+.city-block-d{
+  margin-bottom:25px;
+  .city-name-d{
+    font-weight:normal;
+    font-size:18px;
+  }
+  .districts-b{
+    margin-top:5px;
+    margin-left:10px;
+    font-size:12px;
+    .district-b{
+      margin:7px 0px 10px 5px;
+      .district-t{
+        display: inline-block;
+        min-width:200px;
+      }
+    }
+  }
+}

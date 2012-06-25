@@ -1,0 +1,24 @@
+<%= form_for(@valuefield, :html => 
+  { :class => 'form-horizontal value-field-form-validation'}) do |f| %>
+  <%= error_messages_for(@valuefield) %>
+  <fieldset>
+    <legend><%= @valuefield.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :condition_field_id, "Поле:" %>
+      <div class="controls">
+        <%= collection_select(:value_field, :condition_field_id, 
+            ConditionField.forform, :id, :namefield_with_typesubject) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :valuefield, "Значение:" %>
+      <div class="controls">
+        <%= f.text_field :valuefield %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit @valuefield.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

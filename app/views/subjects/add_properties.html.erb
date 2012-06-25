@@ -1,0 +1,23 @@
+<%= simple_form_for(@subject, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= error_messages_for(@subject) %>
+  <fieldset>
+    <legend>Добавить дополнительные данные</legend>
+      <% if properties_zero?(@subject) %>
+        <% @attr.each do |key, value| %>
+          <%= f.simple_fields_for :properties do |p| %>
+            <%= property_builder(p,key,value) %>
+            <%= hidden_builder_cond(p,key,value) %>
+            <%= hidden_builder_type(p,value[:typefield],value) %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= f.simple_fields_for :properties do |p| %>
+          <%= property_edit(p, @attr) %>
+        <% end %>
+      <% end %>
+    <div class="form-actions">
+      <%= f.submit "Добавить", :class => "btn btn-primary" %>
+      <%= link_to icon_share_alt_white + " Пропустить", @subject, :class => "btn btn-info property-cancel" %>
+    </div>
+  </fieldset>
+<% end %>

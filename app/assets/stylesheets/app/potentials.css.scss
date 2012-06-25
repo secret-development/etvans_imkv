@@ -1,0 +1,15 @@
+#potentials-link{
+  float:right;
+}
+#potentials_table th .current{
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#potentials_table th .asc { 
+  background-image: url(sort_asc.png);
+}
+#potentials_table th .desc { 
+  background-image: url(sort_desc.png); 
+}

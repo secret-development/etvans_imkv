@@ -1,0 +1,21 @@
+// index page
+#social-status{
+  #social-status-list{
+    list-style-type: none;
+    margin: 10px 5px 10px 5px;
+    li{
+      margin-bottom: 10px;
+      padding: 2px 0px;
+      .social-status-title{
+        font: 14px;
+        display:inline-block;
+        min-width: 200px;
+      }
+      .actions-with-social-status{
+        display:inline-block;
+      }
+    }  
+  }
+}
+
+

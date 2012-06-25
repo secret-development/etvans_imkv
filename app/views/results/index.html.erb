@@ -1,0 +1,69 @@
+<div id="search-page">
+  <div class="row">
+    <div class="span12" id="search-die">
+      <%= form_for @search, :url => results_path, 
+        :html => {:method => :get, :id => "search-main-form"} do |f| %>
+        <div class="s-group-field">
+          <div class="s-field">
+            <%= f.label :city_id_eq, "Город:" %>
+            <%= f.collection_select(:city_id_eq,
+                City.all, :id, :name) %>
+          </div>
+          <div class="s-field">
+            <%= f.label :typetransaction_id_eq, "Клиент хочет" %>
+            <%= f.select :typetransaction_id_eq, Result.typetransaction %>
+          </div>
+          <div class="s-field">
+            <%= f.label :typesubject_id_eq, "Тип недвижимости:" %>
+            <%= f.collection_select(:typesubject_id_eq,
+                Typesubject.all, :id, :name) %>
+          </div>
+        </div>
+        <div class="s-group-field">
+          <div class="s-field" id="resident-search-block">
+            <%= f.label :resident_id_eq, "ЖК:" %>
+            <%= f.grouped_collection_select(:resident_id_eq, 
+                City.order(:name), :residents, :name ,:id, :title, :include_blank => true) %>
+          </div>
+          <div class="s-field">
+            <%= f.label :district_id_eq, "Район:" %>
+            <%= f.grouped_collection_select(:district_id_eq, 
+                City.order(:name), :districts, :name ,:id, :title, :include_blank => true) %>
+          </div>
+          <div class="s-field">
+            <%= f.label :price_gte, "Цена:" %>
+            <%= f.text_field :price_gte, :class => "price-search-field" %> 
+            – 
+            <%= f.text_field :price_lte, :class => "price-search-field" %>
+            <%= f.select :price_currency_eq, Subject.price_cur_search %>
+          </div>
+        </div>
+        <div class="s-group-field">
+          <div class="s-field">
+            <%= f.label :area_gte, "Площадь:" %>
+            <%= f.text_field :area_gte, :class => "area-search-field" %>
+            –
+            <%= f.text_field :area_lte, :class => "area-search-field" %>
+            <span class="calc-label">м&sup2;</span>
+          </div>
+          <div class="s-field" id="room-search-block">
+            <%= f.label :room_gte, "Количество комнат:" %>
+            <%= f.text_field :room_gte, :class => "room-search-field" %> 
+            – 
+            <%= f.text_field :room_lte, :class => "room-search-field" %>
+          </div>
+          <div class="s-field" id="floor-search-block">
+            <%= f.label :floor_gte, "Этаж:" %>
+            <%= f.text_field :floor_gte, :class => "floor-search-field" %>
+            -
+            <%= f.text_field :floor_lte, :class => "floor-search-field" %>
+          </div>
+        </div>
+        <div class="s-action">
+          <%= f.submit "Поиск", :class => "btn btn-large btn-success" %>  
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => "results" %>
+</div>

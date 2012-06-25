@@ -1,0 +1,26 @@
+<div id="social-status">
+  <h1 class="title-page">
+    <%= link_to "Настройки", settings_path %> → Социальные статусы
+  </h1>  
+  <%= flash_msg(flash[:notice]) %>
+  <% if can? :create, @socialstatuses %>
+    <%= link_to plus_icon + 'Добавить', new_social_status_path, :class => "btn button-add" %>
+  <% end %>
+  <ul id="social-status-list">
+    <% @socialstatuses.each do |s| %>
+      <li>
+        <div class="social-status-title">
+          <%= s.title %>
+        </div>
+        <div class="actions-with-social-status">
+          <% if can? :update, @socialstatuses %>
+            <%= link_to edit_icon, edit_social_status_path(s) %>
+          <% end %>
+          <% if can? :delete, @socialstatuses %>
+            <%= link_to delete_icon, s, :method => :delete, :confirm => "Вы уверены?" %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  <ul>
+</div>

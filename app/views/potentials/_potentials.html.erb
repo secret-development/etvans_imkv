@@ -1,0 +1,66 @@
+<table class="table table-striped table-condensed customers" id="customers_table">
+  <thead>
+    <tr>
+      <th><%= sortable "id", "№" %></th>
+      <th><%= sortable "typetransaction_id", "Сделка" %></th>
+      <th><%= sortable "lastname", "Фамилия" %></th>
+      <th><%= sortable "firstname", "Имя" %></th>
+      <th><%= sortable "social_status_id", "Соц. статус" %></th>
+      <th>Дом. телефон</th>
+      <th>Сот. телефон</th>
+      <th>Добавить объект</th>
+      <th>Заключить сделку</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+   
+  <tbody>
+    <% @potentials.each do |p| %>
+      <tr>
+        <td class="id-table"><%= p.id %></td>
+        <td class="id-table"><%= p.typetransaction.name %></td>
+        <td><%= link_to(isset_field(p.lastname), p) %></td>
+        <td><%= link_to(p.firstname, p) %></td>
+        <td class="id-table">
+          <% if have_object?(p.social_status) %>
+            <%= p.social_status.title %>
+          <% else %>
+            Отсутствует
+          <% end %>
+        </td>
+        <td class="id-table">
+          <% if Customer.check_owner(current_user, p) %>
+            <%= p.phonehome %>
+          <% else %>
+            скрыт
+          <% end %>
+        </td>
+        <td class="id-table">
+          <% if Customer.check_owner(current_user, p) %>
+            <%= p.phonemobile %>
+          <% else %>
+            скрыт
+          <% end %>
+        </td>
+        <td>
+          <%= link_to plus_icon, new_subject_path(:customer_id => p.id), 
+              :title => "Добавить недвижимость" %>
+        </td>
+        <td class="id-table">
+          <span class="icon-trans-status">
+            <%= customer_act?(p) %>  
+          </span>
+          <%= link_to "Сделка", new_transaction_path(:customer_id => p.id) %>
+        </td>
+        <td class="actions-buttons">
+          <%= link_to eye_icon, customer_path(p), :title => "Подробнее", 
+              :rel => "tooltip" %>
+          <%= link_to edit_icon, edit_customer_path(p) %>
+          <%= link_to delete_icon, p , :method => :delete, 
+              :confirm => "Вы уверены?" %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>    
+</table>
+<%= paginate @potentials %>

@@ -1,0 +1,54 @@
+<div class="alert alert-success" id="transaction-document-complete-msg">
+  <a class="close" data-dismiss="alert">×</a>
+  Документ загружен успешно
+</div>
+<%= form_for(@transaction, :html => 
+  {:multipart => true,:class => "form-horizontal"}) do |f| %>
+  <%= error_messages_for(@transaction) %>
+  <fieldset>
+    <legend>Добавить документ</legend>
+  </fieldset>
+  <div id="documents" class="well">
+    <h1>Документы:</h1>
+  <% key = Rails.application.config.session_options[:key] %>
+  <script type="text/javascript">
+  $(function(){
+    var upload_params = {
+      '#{key}' : '<%= cookies[key] %>',
+      '#{request_forgery_protection_token}' : '<%= form_authenticity_token %>',
+      '_http_accept': 'application/javascript'
+    };
+    var url = $('#document_doc').attr('rel');
+    $('#document_doc').uploadify({
+      'uploader'     : '/assets/app/uploadify.swf',
+      'script'       : url,
+      'fileDataName' : 'document[doc]',
+      'fileExt'      : '*.png;*.jpg;*.gif;*.jpeg;*.bmp;*.doc;*.docx;*.dotx;*.dot;*.rtf;*.xml;*.txt;*.xlsx;*.xls;*.xltx;*.xlt;*.csv;*.htm;*.html;*.ppt;*.pptx;*.pdf;*.lpdf',
+      'cancelImg'    : '/assets/app/cancel.png',
+      'multi'        : true,
+      'scriptData'   : upload_params,
+      'auto'         : true,
+      'onComplete'   : function(e, id, obj, response, data) {
+        $('#documents').append(response);
+        $("#transaction-document-complete-msg").show();
+       }
+     });
+  });
+  </script>
+  <% unless @transaction.new_record? %>
+    <div id="add-document-button-form">
+      <%= fields_for Document.new do |f| %>
+        <%= f.file_field :doc, 
+            :rel => transaction_documents_path(@transaction) %>
+      <% end %>  
+    </div>
+  <% end %>
+  <%= render :partial => "documents/document", 
+      :collection => @transaction.documents %>
+  </div>
+  <div class="clear"></div>
+  <div id="back-to-transaction">
+    <%= link_to icon_arrow_left_white + " Вернуться к сделке",
+        transaction_path(@transaction), :class => "btn btn-primary" %>
+  </div>
+<% end %>

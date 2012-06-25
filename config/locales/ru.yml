@@ -1,0 +1,137 @@
+ru:
+  views:
+    pagination:
+      previous: "Предыдущий"
+      next: "Следующий"
+      last: "Последний"
+      first: "Первый"
+      truncate: "..."
+        
+  activerecord:
+    models:
+      city: "Города"
+      condition_field: "Дополнительныя поля"
+      customer: "Клиенты"
+      district: "Районы"
+      document: "Документы"
+      photo: "Фото"
+      property: "Свойства"
+      resident: "Жилой комплекс"
+      social_status: "Социальные статусы"
+      subject: "Объекты"
+      task: "Задачи"
+      transaction: "Сделки"
+      typesubject: "Типы объектов"
+      typetransaction: "Типы сделок"
+      user: "Персонал"
+      value_field: "Значения дополнительных полей"
+      worktime: "Рабочее время"
+    attributes:
+      city:
+        name: "Название"
+      condition_field:
+        namefield: "Название поля"
+        typefield: "Тип поля"
+        typesubject_id: "Тип объекта"
+      customer:
+        firstname: "Значение поля 'Имя'"
+        lastname: "Значение поля 'Фамилия'"
+        phonehome: "Домашний телефон"
+        phonemobile: "Мобильный телефон"
+        email: "e-mail"
+        note: "Значение поля 'Заметка'"
+        potentials: "Потенциальный"
+        social_status_id: "Социальный статус"
+        typetransaction_id: "Тип сделки"
+      district:
+        city_id: "Город"
+        title: "Название"
+      document:
+        transaction_id: "Значение поля 'Сделка'"
+        doc: "Документ"
+      photo:
+        subject_id: "Объект"
+        image: "Изображение"
+      property:
+        condition: "Условие"
+        value: "Значение"
+        subject_id: "Объект"
+        typefield: "Тип поля"
+      resident:
+        title: "Название"
+        city_id: "Город"
+      social_status:
+        title: "Название"
+      subject:
+        typesubject: "Тип объекта"
+        city: "Город"
+        price: "Значение поля 'Цена'"
+        area: "Значение поля 'Площадь'"
+        address: "Адрес"
+        price_currency: "Значение поля 'Валюта'"
+        active: "Статус"
+        floor: "Этаж"
+        floorall: "Этажность"
+        district_id: "Район"
+        user_id: "Ответственный"
+        customer_id: "Хозяин"
+        typetransaction_id: "Тип сделки"
+        street_src: "Значение поля 'Улица'"
+        house_src: "Значение поля 'Дом'"
+        flat_src: "Значение поля 'Квартира'"
+        note: "Значение поля 'Заметка'"
+        resident: "Жилой комплекс"
+      task:
+        title: "Название"
+        description: "Описание"
+        user_id: "Ответственный"
+        deadline: "Дедлайн"
+        done: "Значение поля 'Сделано'"
+        admin: "Администратор"
+        user_lastname: "Значение поля 'Фамилия ответственного'"
+      transaction:
+        name: "Название"
+        description: "Описание"
+        customer_id: "Клиент"
+        user_id: "Ответственный"
+        typetransaction_id: "Тип сделки"
+        subject_id: "Объект"
+        price: "Значение поля 'Сумма'"
+        payment: "Значение поля 'Оплата'"
+        admin: "Администратор"
+        price_currency: "Значение поля 'Валюта'"
+        user_lastname: "Значение поля 'Фамилия ответственного'"
+      typesubject:
+        name: "Название"
+        permalink: "Значение поля 'Постоянная ссылка'"
+        floor: "Значение поля 'Этажность'"
+        resident: "Жилой комплекс"
+      typetransaction:
+        name: "Название"
+      user:
+        email: "e-mail"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        role: "Администратор"
+        lastname: "Значение поля 'Фамилия'"
+        firstname: "Значение поля 'Имя'"
+        phonehome: "Домашний телефон"
+        phonemobile: "Мобильный телефон"
+        area_code: "Код"
+        phonemobile1: "Значение поля 'Первая часть номера'"
+        phonemobile2: "Значение поля 'Вторая часть номера'"
+      value_field:
+        valuefield: "Значение поля"
+        condition_field_id: "Дополнительное поле"
+      worktime:
+        start_hour: "Час начала"
+        start_min: "Минута начала"
+        end_hour: "Час конца"
+        end_hour: "Минута конца"
+      paginator:
+        resource: "Ресурс"
+        paginate: "Значение поля 'Количество элементов'"
+        
+  unauthorized: 
+    manage:
+      all: "Действия запрещены!"

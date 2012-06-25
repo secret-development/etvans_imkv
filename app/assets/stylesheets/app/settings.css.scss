@@ -1,0 +1,68 @@
+#settings{
+  
+  // list:
+  #settings-list{
+    list-style-type: none;
+    width: 90%;
+    margin: 40px auto 5px auto;
+    display: block;
+    text-align: justify;
+    
+    li{
+      float:left;
+      width: 24%;
+      min-height:80px;
+      margin-right: 10px;
+      margin-top: 25px;
+      margin-bottom: 45px;
+      text-align: center;
+      // border:1px solid #ccc;
+      // links:
+      a{
+        display: block;
+        width: 100%;
+        height: 80px;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      
+      // icons for links
+      .city-icon{
+        background: url(city_icon.png) no-repeat center 30px;
+      }
+      .typeclients-icon{
+        background: url(typeclients_icon.png) no-repeat center 30px;
+      }
+      .socialstatus-icon{
+        background: url(socialstatus_icon.png) no-repeat center 30px;
+      }
+      .typeobject-icon{
+        background: url(typeobject_icon.png) no-repeat center 30px;
+      }
+      .condition-icon{
+        background: url(condition_icon.png) no-repeat center 30px;
+      }
+      .values-icon{
+        background: url(values_icon.png) no-repeat center 30px;
+      }
+      .worktime-icon{
+        background: url(extended_search.png) no-repeat center 30px;
+      }
+      .district-icon{
+        background: url(district_icon.png) no-repeat center 30px;
+      }
+      .resident-icon{
+        background: url(resident_icon.png) no-repeat center 30px;
+      }
+      .paginator-icon{
+        background: url(paginator_icon.png) no-repeat center 30px;
+      }
+      .customers-s-icon{
+        background: url(customers_settings_icon.png) no-repeat center 30px;
+      }
+    }
+    
+  }
+  
+}

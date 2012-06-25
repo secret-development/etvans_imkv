@@ -1,0 +1,22 @@
+<h1 class="title-page">
+  <%= link_to "Настройки", settings_path %> → Районы
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<% @cities.each do |c| %>
+  <div class="city-block-d">
+    <h3 class="city-name-d"><%= c.name %>:</h3>  
+    <div class="districts-b">
+      <% c.districts.each do |d| %>
+        <div class="district-b">
+          <span class="district-t">
+            <%= d.title %>
+          </span>
+          <span class="actions-with-d">
+            <%= link_to edit_icon, edit_district_path(d), :rel => "tooltip", :title => "Редактировать" %>
+            <%= link_to delete_icon, d, :method => :delete, :confirm => "Вы уверены?", :rel => "tooltip", :title => "Удалить (нежелательно)" %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

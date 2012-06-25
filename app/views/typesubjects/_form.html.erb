@@ -1,0 +1,36 @@
+<%= form_for(@typesubject, :html => 
+  {:class => "form-horizontal typesubject-form-validation"}) do |f| %>
+  <%= error_messages_for(@typesubject) %>
+  <fieldset>
+    <legend><%= @typesubject.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :name, "Название:" %>
+      <div class="controls">
+        <%= f.text_field :name, :placeholder => "Коттедж..." %>
+      </div>
+    </div>
+    <h3 class="advanced-options-for-typesubject">Важны ли следующие опции?</h3>
+    <div class="control-group">
+      <%= f.label :floor, "Жилые комплексы:" %>
+      <div class="controls">
+        <%= select('typesubject', 'resident', [["Да",true],["Нет",false]]) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :floor, "Этажность:" %>
+      <div class="controls">
+        <%= select('typesubject', 'floor', [["Да",true],["Нет",false]]) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :room, "Количество комнат:" %>
+      <div class="controls">
+        <%= select('typesubject', 'room', [["Да",true],["Нет",false]]) %>  
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit @typesubject.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>
