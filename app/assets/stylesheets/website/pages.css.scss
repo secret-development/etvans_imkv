@@ -99,3 +99,16 @@
     }
   }
 }
+.pagination{
+  margin-left:10px;
+  margin-top:20px;
+  ul{
+    list-style-type:none;
+    text-align: center !important;
+    li{
+      float:left;
+      margin-left:0px !important;
+      margin-right:10px;
+    }
+  }
+}

@@ -8,7 +8,7 @@ class Website::PagesController < ApplicationController
     @w_title = "Империя квартир"
     @search = Subject.search(params[:search])
     if params[:search]
-      @subjects = @search.page(params[:page]).per(10)
+      @subjects = @search.page(params[:page]).per(2)
       if @subjects.size == 0
         flash.now[:alert] = "Ничего не найдено"
       end
