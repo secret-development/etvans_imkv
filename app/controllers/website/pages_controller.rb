@@ -2,7 +2,6 @@
 class Website::PagesController < ApplicationController
 
   respond_to :html
-
   layout 'website'
 
   def index

@@ -26,7 +26,7 @@
   <div class="grid_9" id="block-other-elements">
     <h3 class="other-elements-title">Дополнительные параметры</h3>
     <!-- ЖК -->
-    <p>
+    <p id="resident-search-block">
       <span class="s-f-title">
         <%= f.label :resident_id_eq, "ЖК:" %>
       </span>
@@ -42,7 +42,7 @@
           City.order(:name), :districts, :name ,:id, :title, :include_blank => true) %>
     </p>
     <!-- цена -->
-    <p>
+    <p id="room-search-block">
       <span class="s-f-title">
         <%= f.label :price_gte, "Цена:" %>
       </span>
@@ -52,7 +52,7 @@
       <%= f.select :price_currency_eq, Subject.price_cur_search %>
     </p>
     <!-- количество комнат -->
-    <p>
+    <p id="floor-search-block">
       <span class="s-f-title">
         <%= f.label :room_gte, "Количество комнат:" %>  
       </span>
@@ -82,7 +82,7 @@
   </div>
   <div class="clear"></div>
   <div class="grid_9">
-    <input type="submit" value="Поиск" id="button-search">
+    <%= f.submit "Поиск", :id => "button-search" %>  
   </div>
 </div>
 <div class="clear"></div>
