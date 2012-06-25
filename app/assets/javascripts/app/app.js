@@ -1105,5 +1105,4 @@ $(document).ready(function() {
   }, function() {
     $(".more-phones").slideUp();
   });
-  
 });
