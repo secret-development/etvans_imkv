@@ -251,3 +251,37 @@ $(document).ready(function() {
     };
   });
 });
+
+// photos (subject -> show)
+$(document).ready(function() {
+  $("#subject-show-photos-thumbs a").click(function(event) {
+    var big_pic = $(this).attr('href');
+    var thumb_pic = $(this).children().attr('src');
+    $("#subject-show-photo-main a").attr('href', big_pic);
+    $("#subject-show-photo-main a img").attr('src', thumb_pic)
+    $("#subject-show-photos-thumbs").find("A.stActive").removeClass("stActive");
+    $(this).addClass("stActive");
+    return false;
+  });
+
+  // fancybox
+  $("#subject-show-photo-main a").click(function(event) {
+    var piclist = [];
+    var curindex = 0;
+    $("#subject-show-photos-thumbs a").each(function(idx) {
+      piclist.push(this.href);
+      if($(this).hasClass("stActive")) curindex=idx;
+    });
+    $.fancybox(piclist, {
+        'padding'           : 0,
+        'margin'            : 0,
+        'centerOnScroll'    : true,
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none',
+        'type'              : 'image',
+        'changeFade'        : 0,
+        'index'             : curindex
+    });
+    return false;
+  });
+});

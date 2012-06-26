@@ -1,3 +1,66 @@
 // Place all the styles related to the website/subject controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// mixins:
+@mixin rounded{
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  -o-border-radius:5px;
+}
+
+// my css
+#subject-show{
+  // border:1px solid #ccc;
+  
+  // header
+  .subject-show-header{
+    height:25px;
+    .subject-show-h-active{
+      padding:7px;
+      @include rounded;
+      background:#E9F5F8;
+    }
+    .subject-show-h-inactive{
+      padding:7px;
+      @include rounded;
+      background:#F8DBDB;
+    }
+    .subject-show-h-room{
+      display: inline-block;
+      margin-left:5px;
+      color:#575757;
+      font-weight:bold;
+    }
+  }
+  // main info block
+  .subject-show-info-block{
+    float:left;
+    width:60%;
+    // border:1px solid #ccc;
+    margin-top:20px;
+    font-size:11px;
+    .subject-show-field{
+      margin-bottom:5px;
+    }
+  }
+  .subject-show-photos{
+    margin-top:20px;
+    float:left;
+    width:38%;
+    // border:1px solid #ccc;
+    #subject-show-photo-main{
+      img{
+        width:230px;
+        height:155px;
+      }
+    }
+    #subject-show-photos-thumbs{
+      margin-top:7px;
+      img{
+        width:42px;
+        height:32px;
+      }
+    }
+  }
+}

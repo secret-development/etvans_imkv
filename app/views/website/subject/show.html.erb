@@ -1,71 +1,76 @@
-<div class="grid_10 push_1" id="result-s">
-  
-  <div class="result-s-subject">
-    <!-- фото -->
-    <div class="result-s-subject-photo">
-      <% if isset_photo?(@subject) %>
-        <%= image_tag(@subject.photos.first.image_url(:thumb),                     
-            :title => "#{@subject.photos.size} фото") %>
-      <% else %>
-        <%= image_tag("app/no-photo.gif", :title => "Нет фото") %>
-      <% end %>
+<div class="grid_10 push_1" id="subject-show">
+  <div class="subject-show-header">
+    <% if @subject.active == true %>
+      <div class="subject-show-h-active">
+        <%= @subject.typesubject.name %> за <%= price_currency(@subject) %>
+        |
+        <% if have_object?(@subject.room) %>
+          <div class="subject-show-h-room">
+            <%= to_room(@subject) %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="subject-show-h-inactive">
+        <%= @subject.typesubject.name %> за <%= price_currency(@subject) %>
+        |
+        <% if have_object?(@subject.room) %>
+          <div class="subject-show-h-room">
+            <%= to_room(@subject) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <!-- основная информация -->
+  <div class="subject-show-info-block">
+    <div class="subject-show-field">
+      <b>Статус:</b>
+      <b><%= active_subject_text?(@subject) %></b>
     </div>
-    <div class="result-s-subject-header">
-      <% if @subject.active == true %>
-        <div class="result-active">
-          <%= @subject.typesubject.name %>
-          за <%= price_currency(@subject) %>
-          |
-          <% if have_object?(@subject.room) %>
-            <div class="result-s-subject-room">
-              <%= to_room(@subject) %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="result-inactive">
-          <%= @subject.typesubject.name %>
-          за <%= price_currency(@subject) %>
-          |
-          <% if have_object?(s.room) %>
-            <div class="result-s-subject-room">
-              <%= to_room(@subject) %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-      <div class="result-subject-other-info">
-        <div>
-          Адресс: <%= @subject.address %>
-        </div>
-        <% if have_object?(@subject.floor) %>
-          <div>
-            Этаж: <%= @subject.floor %>
-          </div>
+    <div class="subject-show-field">
+      Адресс: <%= @subject.address %>
+    </div>
+    <% if have_object?(@subject.floor) %>
+      <div class="subject-show-field">
+        Этаж: <%= @subject.floor %>
+      </div>
+    <% end %>
+    <% if have_object?(@subject.floorall) %>
+      <div class="subject-show-field">
+        Этажность: <%= @subject.floorall %>
+      </div>
+    <% end %>
+    <% if have_object?(@subject.resident) %>
+      <div class="subject-show-field">
+        ЖК: <%= @subject.resident.title %>
+      </div>
+    <% end %>
+    <% if have_object?(@subject.district) %>
+      <div class="subject-show-field">
+        Район: <%= @subject.district.title %>
+      </div>
+    <% end %>
+    <div class="subject-show-field">
+      <%= puts_properties(@subject) %>
+    </div>
+    <div class="subject-show-field">
+      Дата добавления: <%= to_date(@subject.created_at) %>
+    </div>
+  </div>
+  <!-- фотографии -->
+  <% if @subject.photos.size > 0 %>
+    <div class="subject-show-photos">
+      <div id="subject-show-photo-main">
+        <%= link_to(image_tag(@subject.photos.first.image_url(:thumb)), @subject.photos.first.image_url) %>
+      </div>
+      <div id="subject-show-photos-thumbs">
+        <% @subject.photos.each do |p| %>
+          <%= link_to(image_tag(p.image_url(:thumb)), p.image_url) %>
         <% end %>
-        <% if have_object?(@subject.floorall) %>
-          <div>
-            Этажность: <%= @subject.floorall %>
-          </div>
-        <% end %>
-        <% if have_object?(@subject.resident) %>
-          <div>
-            ЖК: <%= @subject.resident.title %>
-          </div>
-        <% end %>
-        <% if have_object?(@subject.district) %>
-          <div>
-            Район: <%= @subject.district.title %>
-          </div>
-        <% end %>
-        <div>
-          <%= puts_properties(@subject) %>
-        </div>
-        <div>
-          Дата добавления: <%= to_date(@subject.created_at) %>
-        </div>
       </div>
     </div>
-    <div class="clear"></div>
-  </div>
+  <% end %>
+  <!--  / фотографии -->
 </div>
+<div class="clear"></div>

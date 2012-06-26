@@ -5,7 +5,7 @@ class Website::PagesController < ApplicationController
   layout 'website'
 
   def index
-    @w_title = "Империя квартир"
+    @w_title = "Поиск"
     @search = Subject.search(params[:search])
     if params[:search]
       @subjects = @search.page(params[:page]).per(2)
