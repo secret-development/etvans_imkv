@@ -1,7 +1,9 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
   
-  namespace :website do resources :advices end
+  namespace :website do 
+    resources :advices 
+  end
 
   # website:
   root :to => "website/pages#index"
@@ -15,8 +17,8 @@ Crm::Application.routes.draw do
   match "etvans" => 'results#index'
   
   scope "/etvans" do
+
     match "search" => 'results#index'
-    
     resources :customeraccesses
 
     resources :paginators, :except => [:new, :create, :destroy]

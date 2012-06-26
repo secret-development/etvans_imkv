@@ -33,7 +33,7 @@ class Website::AdvicesController < ApplicationController
     @advice = Website::Advice.new(params[:advice])
     if @advice.save
       flash[:notice] = "Совет успешно сохранён"
-      respond_with(@advice, :location => advices_path)
+      respond_with(@advice, :location => website_advices_path)
     else
       render 'new'
     end
@@ -49,7 +49,7 @@ class Website::AdvicesController < ApplicationController
     @advice = Website::Advice.find(params[:id])
     if @advice.update_attributes(params[:advice])
       flash[:notice] = "Совет успешно обновлён"
-      respond_with(@advice, :location => advices_path)
+      respond_with(@advice, :location => website_advices_path)
     else
       render 'edit'
     end
@@ -59,6 +59,6 @@ class Website::AdvicesController < ApplicationController
     @advice = Website::Advice.find(params[:id])
     @advice.destroy
     flash[:destroy] = "Совет успешно удален"
-    redirect_to advices_path
+    redirect_to website_advices_path
   end
 end
