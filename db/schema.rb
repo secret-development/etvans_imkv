@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413075233) do
+ActiveRecord::Schema.define(:version => 20120626112149) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20120413075233) do
     t.string   "phonemobile"
     t.string   "email"
     t.text     "note"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "potentials",         :default => false
     t.integer  "social_status_id"
     t.integer  "typetransaction_id"
@@ -191,6 +191,14 @@ ActiveRecord::Schema.define(:version => 20120413075233) do
     t.integer  "condition_field_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "website_advices", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "author"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "worktimes", :force => true do |t|
