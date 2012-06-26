@@ -1,0 +1,2 @@
+module Website::AdvicesHelper
+end

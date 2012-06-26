@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
   
+  namespace :website do resources :advices end
+
   # website:
   root :to => "website/pages#index"
   match "contacts" => "website/pages#contacts"
