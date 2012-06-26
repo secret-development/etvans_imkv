@@ -1,0 +1,2 @@
+module Website::DealsHelper
+end
