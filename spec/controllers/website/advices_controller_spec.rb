@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 describe Website::AdvicesController do
+  
   render_views
   
   before(:each) do
@@ -10,7 +11,7 @@ describe Website::AdvicesController do
     test_log_in(@user)
     # end auth
     
-    @advice = Factory(:advice)
+    @advice = Factory(:tip)
   end
   
   it "get :index" do
@@ -20,6 +21,11 @@ describe Website::AdvicesController do
   
   it "get :admin_index" do
     get :admin_index
+    response.should be_success
+  end
+  
+  it "get :show" do
+    get :show, :id => @advice.id
     response.should be_success
   end
   
