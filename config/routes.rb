@@ -6,6 +6,7 @@ Crm::Application.routes.draw do
   match "contacts" => "website/pages#contacts"
   match "about" => "website/pages#about"
   match "subject/:id" => "website/subject#show", :as => "subweb"
+  match "hot_deals" => "website/deals#index", :as => "hot_deals"
   
   # app:
   
