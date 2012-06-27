@@ -10,16 +10,20 @@ describe Website::PagesController do
       response.should be_success
     end
     
-    it "should be success" do
+    it "about" do
       get :about
       response.should be_success
     end
 
-    it "does something" do
+    it ":contacts" do
       get :contacts
       response.should be_success
     end
     
+    it "advices" do
+      get :advices
+      response.should be_success
+    end
     
   end
   

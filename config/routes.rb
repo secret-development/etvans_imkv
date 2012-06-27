@@ -10,7 +10,7 @@ Crm::Application.routes.draw do
   # hot deals:
   match "hot_deals" => "website/deals#index", :as => "hot_deals"
   # advices:
-  
+  match "advices" => "website/pages#advices", :as => "advices"
   
   # app:
   match "etvans" => 'results#index'
