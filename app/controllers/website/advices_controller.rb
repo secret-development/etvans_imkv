@@ -8,7 +8,7 @@ class Website::AdvicesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @advices = Website::Advice.page(params[:page]).per(5)
+    @advices = Website::Advice.page(params[:page]).per(10)
     @title = "Советы"
     respond_with(@advices)
   end
