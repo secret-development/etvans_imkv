@@ -66,8 +66,80 @@ describe Website::AdvicesController do
         post :create, :advice => @attr
         response.should redirect_to(website_advices_path)
       end
+      
+      it "should create advice object" do
+        lambda do
+          post :create, :advice => @attr
+        end.should change(Website::Advice, :count).by(1)
+      end
+      
+      it "should have a success message" do
+        post :create, :advice => @attr
+        flash[:notice].should =~ /Совет успешно сохранён/i
+      end
     end
   end
+  
+  describe "PUT 'update'" do
+    describe "failure" do
+      before(:each) do
+        @attr = invalid_data
+      end
+      
+      it "should render the 'edit' page" do
+        put :update, :id => @advice.id, :advice => @attr
+        response.should render_template('edit')
+      end
+      
+      it "should not create advice object" do
+        lambda do
+          put :update, :id => @advice.id, :advice => @attr
+        end.should_not change(Website::Advice, :count)
+      end
+    end
+    
+    describe "success" do
+      before(:each) do
+        @attr = valid_data
+      end
+      
+      it "should redirect_to website_advices_path" do
+        put :update, :id => @advice.id, :advice => @attr
+        response.should redirect_to(website_advices_path)
+      end
+      
+      it "should not create advice object" do
+        lambda do
+          put :update, :id => @advice.id, :advice => @attr  
+        end.should_not change(Website::Advice, :count)
+      end
+      
+      it "should success message" do
+        put :update, :id => @advice.id, :advice => @attr
+        flash[:notice].should =~ /Совет успешно обновлён/i
+      end
+    end
+  end
+  
+  describe "DELET 'destroy'" do
+    it "should redirect_to website_advices_path" do
+      delete :destroy, :id => @advice
+      response.should redirect_to(website_advices_path)
+    end
+    
+    it "should destroy advice object" do
+      lambda do
+        delete :destroy, :id => @advice
+        response.should redirect_to(website_advices_path)  
+      end.should change(Website::Advice, :count).by(-1)
+    end
+    
+    it "should success message" do
+      delete :destroy, :id => @advice
+      flash[:notice].should =~ /Совет успешно удалён/i
+    end
+  end
+  
   
   def invalid_data
     {

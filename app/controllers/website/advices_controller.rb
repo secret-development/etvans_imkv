@@ -58,7 +58,7 @@ class Website::AdvicesController < ApplicationController
   def destroy
     @advice = Website::Advice.find(params[:id])
     @advice.destroy
-    flash[:destroy] = "Совет успешно удален"
+    flash[:notice] = "Совет успешно удалён"
     redirect_to website_advices_path
   end
 end
