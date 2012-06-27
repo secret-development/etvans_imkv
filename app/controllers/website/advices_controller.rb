@@ -2,7 +2,9 @@
 class Website::AdvicesController < ApplicationController
   
   respond_to :html
-  before_filter :all_deny, :except => [:index]
+  before_filter :all_deny, :except => [:advice_web_index]
+  before_filter :settings_deny, :except => [:advice_web_index]
+  
   load_and_authorize_resource
   
   def index
@@ -11,7 +13,7 @@ class Website::AdvicesController < ApplicationController
     respond_with(@advices)
   end
   
-  def admin_index
+  def advice_web_index
     @advices = Website::Advice.page(params[:page]).per(5)
     @title = "Советы"
     respond_with(@advices)

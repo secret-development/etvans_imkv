@@ -7,8 +7,9 @@ Crm::Application.routes.draw do
   match "about" => "website/pages#about"
   match "subject/:id" => "website/subject#show", :as => "subweb"
   match "hot_deals" => "website/deals#index", :as => "hot_deals"
+  match "advices" => "website/advices#advice_web_index"
   namespace :website do 
-    resources :advices 
+    resources :advices
   end
   
   # app:
