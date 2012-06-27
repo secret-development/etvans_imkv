@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Website::AdvicesController < ApplicationController
-  
+    
   respond_to :html
   before_filter :all_deny, :except => [:advice_web_index, :show]
   before_filter :settings_deny, :except => [:advice_web_index, :show]
@@ -8,12 +8,6 @@ class Website::AdvicesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @advices = Website::Advice.page(params[:page]).per(5)
-    @title = "Советы"
-    respond_with(@advices)
-  end
-  
-  def advice_web_index
     @advices = Website::Advice.page(params[:page]).per(5)
     @title = "Советы"
     respond_with(@advices)

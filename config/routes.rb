@@ -3,22 +3,24 @@ Crm::Application.routes.draw do
 
   # website:
   root :to => "website/pages#index"
+  # static pages
   match "contacts" => "website/pages#contacts"
   match "about" => "website/pages#about"
   match "subject/:id" => "website/subject#show", :as => "subweb"
+  # hot deals:
   match "hot_deals" => "website/deals#index", :as => "hot_deals"
-  match "advices" => "website/advices#advice_web_index"
-  namespace :website do 
-    resources :advices
-  end
+  # advices:
+  
   
   # app:
-  
   match "etvans" => 'results#index'
   
   scope "/etvans" do
-    
     # for website:
+    namespace :website do
+      resources :advices
+    end
+    
     match "website_manage" => "website_manage#index", :as => "website_manage"
     # end for website
     
