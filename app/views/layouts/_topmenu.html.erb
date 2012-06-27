@@ -74,16 +74,17 @@
             <% end %>
           </ul>
         </li>
-        <% if current_user.role? %>
-          <li>
-            <%= link_to "Управление сайтом", website_manage_path %>
-          </li>
-        <% end %>
       </ul>
       <ul class="nav pull-right">
         <% if current_user.role? %>
-        <li id="settings-link">
-          <%= link_to "Настройки", settings_path %>
+        <li id="settings-link" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Настройки <b class="caret"></b>  
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Настройки", settings_path %></li>
+            <li><%= link_to "Управление сайтом", website_manage_path %></li>
+          </ul>
         </li>
         <% end %>
         <li class="divider-vertical"></li>
