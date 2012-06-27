@@ -2,5 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #website-manage{
-  border:1px solid #ccc;
+  // border:1px solid #ccc;
+  #list-website-cat{
+    li{
+      margin-top:10px;
+      font-size:18px;
+    }
+  }
 }
