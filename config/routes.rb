@@ -1,9 +1,5 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
-  
-  namespace :website do 
-    resources :advices 
-  end
 
   # website:
   root :to => "website/pages#index"
@@ -11,6 +7,9 @@ Crm::Application.routes.draw do
   match "about" => "website/pages#about"
   match "subject/:id" => "website/subject#show", :as => "subweb"
   match "hot_deals" => "website/deals#index", :as => "hot_deals"
+  namespace :website do 
+    resources :advices 
+  end
   
   # app:
   
