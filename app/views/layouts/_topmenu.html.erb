@@ -74,6 +74,11 @@
             <% end %>
           </ul>
         </li>
+        <% if current_user.role? %>
+          <li>
+            <%= link_to "Управление сайтом", "" %>
+          </li>
+        <% end %>
       </ul>
       <ul class="nav pull-right">
         <% if current_user.role? %>
