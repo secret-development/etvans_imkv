@@ -2,8 +2,8 @@
 class Website::AdvicesController < ApplicationController
   
   respond_to :html
-  before_filter :all_deny, :except => [:advice_web_index]
-  before_filter :settings_deny, :except => [:advice_web_index]
+  before_filter :all_deny, :except => [:advice_web_index, :show]
+  before_filter :settings_deny, :except => [:advice_web_index, :show]
   
   load_and_authorize_resource
   
@@ -32,7 +32,7 @@ class Website::AdvicesController < ApplicationController
   end
   
   def create
-    @advice = Website::Advice.new(params[:advice])
+    @advice = Website::Advice.new(params[:website_advice])
     if @advice.save
       flash[:notice] = "Совет успешно сохранён"
       respond_with(@advice, :location => website_advices_path)
@@ -49,7 +49,7 @@ class Website::AdvicesController < ApplicationController
   
   def update
     @advice = Website::Advice.find(params[:id])
-    if @advice.update_attributes(params[:advice])
+    if @advice.update_attributes(params[:website_advice])
       flash[:notice] = "Совет успешно обновлён"
       respond_with(@advice, :location => website_advices_path)
     else

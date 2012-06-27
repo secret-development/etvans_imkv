@@ -20,7 +20,7 @@
           <td><%= to_date(a.created_at) %></td>
           <td class="actions-buttons">
             <%= link_to edit_icon, edit_website_advice_path(a) %>
-            <%= link_to delete_icon, c, :method => :delete, :confirm => "Вы уверены?" %>
+            <%= link_to delete_icon, a, :method => :delete, :confirm => "Вы уверены?" %>
           </td>
         </tr>      
         <% end %>

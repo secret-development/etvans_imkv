@@ -1,0 +1,29 @@
+<%= form_for(@advice, 
+  :html => { :class => "form-horizontal customer-form-validation"}) do |f| %>
+  <%= error_messages_for(@advice) %>
+  <fieldset>
+    <legend><%= @advice.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :title, "Название:" %>
+      <div class="controls">
+        <%= f.text_field :title, :placeholder => "Как купить квартиру?" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :body, "Текст:" %>
+      <div class="controls">
+        <%= f.text_area :body, :placeholder => "...", :rows => 8 %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :author, "Автор:" %>
+      <div class="controls">
+        <%= f.text_field :author, :placeholder => "Иван" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit @advice.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

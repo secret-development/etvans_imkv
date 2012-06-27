@@ -19,11 +19,6 @@ describe Website::AdvicesController do
     response.should be_success
   end
   
-  it "get :admin_index" do
-    get :admin_index
-    response.should be_success
-  end
-  
   it "get :show" do
     get :show, :id => @advice.id
     response.should be_success
