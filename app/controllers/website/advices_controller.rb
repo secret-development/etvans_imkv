@@ -2,8 +2,8 @@
 class Website::AdvicesController < ApplicationController
     
   respond_to :html
-  before_filter :all_deny, :except => [:advice_web_index, :show]
-  before_filter :settings_deny, :except => [:advice_web_index, :show]
+  before_filter :all_deny
+  before_filter :settings_deny
   
   load_and_authorize_resource
   
