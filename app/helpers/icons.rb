@@ -46,6 +46,10 @@ module Icons
     raw("<i class='icon-cog icon-white'></i>")
   end
   
+  def icon_con_black
+    raw("<i class='icon-cog'></i>")
+  end
+  
   def icon_camera_white
     raw("<i class='icon-camera icon-white'></i>")
   end
@@ -106,5 +110,11 @@ module Icons
   def icon_tags
     raw("<i class='icon-tags'></i>")
   end
+  
+  def icon_signal
+    raw("<i class='icon-signal'></i>")
+  end
+  
   # END ICONS
+  
 end
