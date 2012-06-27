@@ -15,6 +15,10 @@ module ApplicationHelper
   def flash_msg_website(object)
     render(:partial => "shared/website/flashmsg", :locals => {:object => object})
   end
+  
+  def more_text()
+    
+  end
 
   
   # for app:
