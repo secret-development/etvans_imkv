@@ -19,7 +19,7 @@ Crm::Application.routes.draw do
   scope "/etvans" do
     
     # for website:
-    match "website_manage" => "websitemanage#index", :as => "website_manage"
+    match "website_manage" => "website_manage#index", :as => "website_manage"
     # end for website
     
     
