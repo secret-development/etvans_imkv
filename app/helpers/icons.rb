@@ -111,8 +111,8 @@ module Icons
     raw("<i class='icon-tags'></i>")
   end
   
-  def icon_signal
-    raw("<i class='icon-signal'></i>")
+  def icon_leaf
+    raw("<i class='icon-leaf'></i>")
   end
   
   # END ICONS
