@@ -17,7 +17,14 @@ Crm::Application.routes.draw do
   match "etvans" => 'results#index'
   
   scope "/etvans" do
-
+    
+    # for website:
+    match "website_manage" => "websitemanage#index", :as => website_manage
+    # end for website
+    
+    
+    # for app:
+    
     match "search" => 'results#index'
     resources :customeraccesses
 
