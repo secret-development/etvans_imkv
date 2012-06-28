@@ -4,11 +4,13 @@
   <% @advices.each do |a| %>
     <div class="advice">
       <h1 class="advice-title">
-        <%= a.title %>
+        <%= link_to a.title, "" %>
       </h1>
       <div class="advice-body">
-
+        <%= raw(more_text(a.body)) %>
       </div>
     </div>
   <% end %>
 </div>
+<div class="clear"></div>
+<%= paginate @advices %>

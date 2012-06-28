@@ -116,6 +116,21 @@
 
 // advices -> index
 #advices{
-  border:1px solid #ccc;
-  margin-left:40px;
+  margin-left:30px;
+  .advice{
+
+    margin-bottom:20px;
+    .advice-title{
+      margin-bottom:10px !important;
+      font-size:20px;
+      a{
+        text-decoration:none;
+      }
+    }
+    .advice-body{
+      font-size:14px;
+      font-family:Tahoma;
+      color:#4B4B4B;
+    }
+  }
 }

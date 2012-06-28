@@ -16,8 +16,8 @@ module ApplicationHelper
     render(:partial => "shared/website/flashmsg", :locals => {:object => object})
   end
   
-  def more_text()
-    
+  def more_text(object, length=700)
+    truncate(object, :length => length, :separator => ' ', :omission => "...")
   end
 
   
