@@ -1,0 +1,2 @@
+module Website::StatesHelper
+end

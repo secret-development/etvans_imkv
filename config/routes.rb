@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
 
+  namespace :website do resources :states end
+
   # website:
   root :to => "website/pages#index"
   # static pages
