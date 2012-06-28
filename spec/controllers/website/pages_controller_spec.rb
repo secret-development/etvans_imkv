@@ -8,7 +8,12 @@ describe Website::PagesController do
   describe "GET should be success" do
     
     before(:each) do
-      @advice = Factory(:tip)
+      # start auth
+      @user = Factory(:user)
+      test_log_in(@user)
+      # end auth
+
+      @advice = Factory(:advice_for_show)
     end
     
     it "index" do
@@ -30,11 +35,6 @@ describe Website::PagesController do
   describe "advices" do
     it "advices" do
       get :advices
-      response.should be_success
-    end
-    
-    it "show advice" do
-      get :show_advice, :id => @advice.id
       response.should be_success
     end
   end

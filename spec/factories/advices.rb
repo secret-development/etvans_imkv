@@ -7,4 +7,5 @@ FactoryGirl.define do
     body "test text"
     author "Ivanov"
   end
+  
 end
