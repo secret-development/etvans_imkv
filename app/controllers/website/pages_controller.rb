@@ -24,10 +24,18 @@ class Website::PagesController < ApplicationController
     @w_title = "Контакты"
   end
   
+  # advices:
+  
   def advices
     @w_title = "Полезные советы"
     @advices = Website::Advice.page(params[:page]).per(5)
     respond_with(@advices)
+  end
+  
+  def show_advice
+    @advice = Website::Advice.find(params[:id])
+    @w_title = @advice.title
+    respond_with(@advice)
   end
   
 end
