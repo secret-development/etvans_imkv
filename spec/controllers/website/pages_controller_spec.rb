@@ -7,15 +7,6 @@ describe Website::PagesController do
   
   describe "GET should be success" do
     
-    before(:each) do
-      # start auth
-      @user = Factory(:user)
-      test_log_in(@user)
-      # end auth
-
-      @advice = Factory(:advice_for_show)
-    end
-    
     it "index" do
       get :index
       response.should be_success
