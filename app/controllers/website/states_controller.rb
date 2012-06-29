@@ -4,6 +4,8 @@ class Website::StatesController < ApplicationController
   respond_to :html
   before_filter :all_deny
   before_filter :settings_deny
+
+  load_and_authorize_resource
   
   def index
     @states = Website::State.page(params[:page]).per(10)
