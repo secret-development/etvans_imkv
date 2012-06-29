@@ -1,0 +1,29 @@
+<%= form_for(@state, 
+  :html => { :class => "form-horizontal customer-form-validation"}) do |f| %>
+  <%= error_messages_for(@state) %>
+  <fieldset>
+    <legend><%= @state.legend_value %></legend>
+    <div class="control-group">
+      <%= f.label :title, "Название:" %>
+      <div class="controls">
+        <%= f.text_field :title, :placeholder => "Радуга" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, "Описание:" %>
+      <div class="controls">
+        <%= f.text_area :description, :placeholder => "...", :rows => 10 %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :author, "Адрес:" %>
+      <div class="controls">
+        <%= f.text_field :address, :placeholder => "Есильский район" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit @state.button_value, :class => "btn btn-primary" %>
+      <button type="reset" class="btn cancel-form">Отмена</button>
+    </div>
+  </fieldset>
+<% end %>

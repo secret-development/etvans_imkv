@@ -1,0 +1,16 @@
+<h1 class="title-page">
+  <%= link_to "Информация о ЖК", website_states_path %> → <%= @state.title %>
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<div id="m-content-advice">
+  <div class="m-body-advice">
+    <%= raw(@state.description) %>
+  </div>
+  <div class="m-author-advice">
+    Адрес: <%= @state.address %>
+  </div>
+  <div class="m-w-show-actions">
+    <%= link_to "Редактировать", edit_website_state_path(@state) %>
+    <%= link_to "Удалить", @state, :method => :delete, :confirm => "Вы уверены?" %>
+  </div>
+</div>

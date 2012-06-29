@@ -1,4 +1,6 @@
-<h1 class="title-page">Советы</h1>
+<h1 class="title-page">
+  <%= link_to "Управление сайтом", website_manage_path %> → Советы
+</h1>
 <%= flash_msg(flash[:notice]) %>
 <%= link_to plus_icon + " Добавить" , new_website_advice_path, :class => "btn button-add" %>
 <div id="website-manage">
