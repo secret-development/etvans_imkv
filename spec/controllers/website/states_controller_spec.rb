@@ -78,6 +78,67 @@ describe Website::StatesController do
     
   end
   
+  describe "PUT 'update'" do
+    
+    describe "failure" do
+      before(:each) do
+        @attr = invalid_data
+      end
+      
+      it "should render 'edit' template" do
+        put :update, :id => @state.id, :website_state => @attr
+        response.should render_template('edit')
+      end
+      
+      it "should not create a state object" do
+        lambda do
+          put :update, :id => @state.id, :website_state => @attr
+        end.should_not change(Website::State, :count)
+      end
+    end
+    
+    describe "success" do
+      before(:each) do
+        @attr = valid_data
+      end
+      
+      it "should redirect to website_states_path" do
+        put :update, :id => @state.id, :website_state => @attr
+        response.should redirect_to(website_states_path)
+      end
+      
+      it "should not create state object" do
+        lambda do
+          put :update, :id => @state.id, :website_state => @attr
+        end.should_not change(Website::State, :count)
+      end
+      
+      it "should success message" do
+        put :update, :id => @state.id, :website_state => @attr
+        flash[:notice].should =~ /Информация успешно обновлена/
+      end
+    end
+    
+  end
+  
+  
+  describe "DELETE 'destroy'" do
+    it "should redirect to website_states_path" do
+      delete :destroy, :id => @state.id
+      response.should redirect_to(website_states_path)
+    end
+    
+    it "should destroy state object" do
+      lambda do
+        delete :destroy, :id => @state.id
+      end.should change(Website::State, :count).by(-1)
+    end
+    
+    it "should success message" do
+      delete :destroy, :id => @state.id
+      flash[:notice].should =~ /Информация успешно удалена/i
+    end
+  end
   
   def valid_data
     {

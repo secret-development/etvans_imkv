@@ -39,4 +39,21 @@ class Website::StatesController < ApplicationController
     end
   end
   
+  def update
+    @state = Website::State.find(params[:id])
+    if @state.update_attributes(params[:website_state])
+      flash[:notice] = "Информация успешно обновлена"
+      respond_with(@state, :location => website_states_path)
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    @state = Website::State.find(params[:id])
+    @state.destroy
+    flash[:notice] = "Информация успешно удалена"
+    redirect_to(website_states_path)
+  end
+  
 end
