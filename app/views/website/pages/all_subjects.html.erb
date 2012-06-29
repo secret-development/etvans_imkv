@@ -1,0 +1,77 @@
+<!-- all subjects page -->
+<h1 class="page-title">Вся недвижимость</h1>
+<div class="grid_10 push_1" id="result-s">
+  <!-- список недвижимости -->
+  <% @allsubjects.each do |s| %>
+    <div class="result-s-subject">
+      <!-- фото -->
+      <div class="result-s-subject-photo">
+        <% if isset_photo?(s) %>
+          <%= link_to(image_tag(s.photos.first.image_url(:thumb),                     
+              :title => "#{s.photos.size} фото"), subweb_path(s)) %>
+        <% else %>
+          <%= link_to(image_tag("app/no-photo.gif", :title => "Нет фото"), subweb_path(s)) %>
+        <% end %>
+      </div>
+      <div class="result-s-subject-header">
+        <% if s.active == true %>
+          <div class="result-active">
+            <%= link_to s.typesubject.name, subweb_path(s) %>
+            за <%= price_currency(s) %>
+            |
+            <% if have_object?(s.room) %>
+              <div class="result-s-subject-room">
+                <%= to_room(s) %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="result-inactive">
+            <%= link_to s.typesubject.name, subweb_path(s) %>
+            за <%= price_currency(s) %>
+            |
+            <% if have_object?(s.room) %>
+              <div class="result-s-subject-room">
+                <%= to_room(s) %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="result-subject-other-info">
+          <div>
+            Адресс: <%= s.address %>
+          </div>
+          <% if have_object?(s.floor) %>
+            <div>
+              Этаж: <%= s.floor %>
+            </div>
+          <% end %>
+          <% if have_object?(s.floorall) %>
+            <div>
+              Этажность: <%= s.floorall %>
+            </div>
+          <% end %>
+          <% if have_object?(s.resident) %>
+            <div>
+              ЖК: <%= s.resident.title %>
+            </div>
+          <% end %>
+          <% if have_object?(s.district) %>
+            <div>
+              Район: <%= s.district.title %>
+            </div>
+          <% end %>
+          <div>
+            <%= puts_properties(s) %>
+          </div>
+          <div>
+            Дата добавления: <%= to_date(s.created_at) %>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+  <%= flash_msg_website(flash[:notice]) %>
+  <%= paginate @allsubjects %>
+</div>

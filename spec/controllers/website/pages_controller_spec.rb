@@ -37,4 +37,11 @@ describe Website::PagesController do
     end
   end
   
+  describe "all subjects" do
+    it "all_subjects" do
+      get :all_subjects
+      response.should be_success
+    end
+  end
+  
 end

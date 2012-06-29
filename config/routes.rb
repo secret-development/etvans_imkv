@@ -15,6 +15,8 @@ Crm::Application.routes.draw do
   # states
   match "states" => "website/pages#states", :as => "states"
   match "states/:id" => "website/pages#show_state", :as => "state"
+  # all subjects
+  match "all_subjects" => "website/pages#all_subjects", :as => "all_subjects"
   
   # app:
   match "etvans" => 'results#index'

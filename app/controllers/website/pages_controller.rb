@@ -52,4 +52,10 @@ class Website::PagesController < ApplicationController
     respond_with(@state)
   end
   
+  # all subjects
+  def all_subjects
+    @w_title = "Вся недвижимость"
+    @allsubjects = Kaminari.paginate_array(Subject.all.reverse).page(params[:page]).per(15)
+  end
+  
 end
