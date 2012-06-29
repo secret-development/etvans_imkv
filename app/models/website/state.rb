@@ -4,6 +4,9 @@ class Website::State < ActiveRecord::Base
   validates :title, :presence => true
   validates :description, :presence => true
   validates :address, :presence => true
+
+  # carrierwave
+  mount_uploader :jk, JkUploader
   
   def legend_value
     if new_record?

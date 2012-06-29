@@ -6,6 +6,9 @@
   <div class="m-body-advice">
     <%= raw(@state.description) %>
   </div>
+  <div id="website_state_photo_js">
+    <%= image_tag @state.jk.url(:thumb) %>
+  </div>
   <div class="m-author-advice">
     Адрес: <%= @state.address %>
   </div>

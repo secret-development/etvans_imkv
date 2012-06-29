@@ -21,6 +21,12 @@
         <%= f.text_field :address, :placeholder => "Есильский район" %>
       </div>
     </div>
+    <div class="control-group">
+      <%= f.label :jk, "Фотография:" %>
+      <div class="controls">
+        <%= f.file_field :jk %>
+      </div>
+    </div>
     <div class="form-actions">
       <%= f.submit @state.button_value, :class => "btn btn-primary" %>
       <button type="reset" class="btn cancel-form">Отмена</button>
