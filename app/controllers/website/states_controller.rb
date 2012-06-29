@@ -29,4 +29,14 @@ class Website::StatesController < ApplicationController
     respond_with(@state)
   end
   
+  def create
+    @state = Website::State.new(params[:website_state])
+    if @state.save
+      flash[:notice] = "Информация успешно сохранена"
+      respond_with(@state, :location => website_states_path)
+    else
+      render 'new'
+    end
+  end
+  
 end
