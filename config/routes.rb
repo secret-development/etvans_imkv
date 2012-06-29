@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
 
-  namespace :website do resources :states end
-
   # website:
   root :to => "website/pages#index"
   # static pages
@@ -19,11 +17,16 @@ Crm::Application.routes.draw do
   
   scope "/etvans" do
     # for website:
+    match "website_manage" => "website_manage#index", :as => "website_manage"
+    
     namespace :website do
       resources :advices
     end
     
-    match "website_manage" => "website_manage#index", :as => "website_manage"
+    namespace :website do 
+      resources :states 
+    end
+    
     # end for website
     
     
