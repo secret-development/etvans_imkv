@@ -3,6 +3,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery  
   
+  # for website:
+  before_filter :meta_defaults
+  # for app:
+
   helper_method :redirect_to
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -20,6 +24,14 @@ class ApplicationController < ActionController::Base
   helper_method :tasks_size
     
   private
+  
+    # for website:
+    def meta_defaults
+      @meta_keywords = "Астана, недвижимость, квартиры, снять квартиру в Астане, купить квартиру в Астане, доступное жилье, жилые комплексы, продажа квартир в Астане"
+      @meta_description = "Лучший выбор квартир в Астане. Быстрый, качественный поиск."
+    end
+  
+    # for app:
   
     def current_user
       @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]     
