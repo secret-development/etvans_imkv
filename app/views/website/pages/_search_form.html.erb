@@ -9,7 +9,7 @@
     <%= f.select :typetransaction_id_eq, Result.typetransaction %>
     <!-- тип недвижимости -->
     <%= f.collection_select(:typesubject_id_eq,
-        Typesubject.all, :id, :name) %>
+        Typesubject.select_search, :id, :name) %>
     <span class="s-f-title">
       <%= f.label :city_id_eq, "в городе" %>
     </span>
