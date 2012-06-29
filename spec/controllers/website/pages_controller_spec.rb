@@ -30,4 +30,11 @@ describe Website::PagesController do
     end
   end
   
+  describe "states" do
+    it "states" do
+      get :states
+      response.should be_success
+    end
+  end
+  
 end

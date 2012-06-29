@@ -12,6 +12,10 @@ Crm::Application.routes.draw do
   # advices:
   match "advices" => "website/pages#advices", :as => "advices"
   match "advices/:id" => "website/pages#show_advice", :as => "advice"
+  # states
+  match "states" => "website/pages#states", :as => "states"
+  match "states/:id" => "website/pages#show_state", :as => "state"
+  
   # app:
   match "etvans" => 'results#index'
   

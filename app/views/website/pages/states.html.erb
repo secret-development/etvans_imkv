@@ -1,0 +1,22 @@
+<!-- states page -->
+<h1 class="page-title">Информация по ЖК</h1>
+<div class="grid_11" id="states">
+  <% @states.each do |s| %>
+    <div class="state">
+      <h1 class="state-title">
+        <%= link_to s.title, state_path(s) %>
+      </h1>
+      <div class="state-description">
+        <% if s.jk.size > 0 %>
+          <%= image_tag s.jk.url(:thumb) %>        
+        <% end %>
+        <div class="state-description-text">
+          <%= raw(more_text(s.description)) %>          
+        </div>
+      </div>
+          <div class="clear"></div>
+    </div>
+  <% end %>
+</div>
+<div class="clear"></div>
+<%= paginate @states %>

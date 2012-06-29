@@ -38,4 +38,18 @@ class Website::PagesController < ApplicationController
     respond_with(@advice)
   end
   
+  # states
+  
+  def states
+    @w_title = "Информация по ЖК"
+    @states = Website::State.page(params[:page]).per(5)
+    respond_with(@states)
+  end
+  
+  def show_state
+    @state = Website::State.find(params[:id])
+    @w_title = @state.title
+    respond_with(@state)
+  end
+  
 end

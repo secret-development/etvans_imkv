@@ -1,0 +1,14 @@
+<div class="state">
+  <h1 class="state-title">
+    <%= @state.title %>
+  </h1>
+  <div class="state-description">
+    <% if @state.jk.size > 0 %>
+      <%= image_tag @state.jk.url(:thumb) %>        
+    <% end %>
+    <div class="state-description-text">
+      <%= raw(more_text(@state.description)) %>          
+    </div>
+  </div>
+      <div class="clear"></div>
+</div>
