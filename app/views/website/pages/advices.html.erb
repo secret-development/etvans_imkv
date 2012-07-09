@@ -1,0 +1,16 @@
+<!-- advices page -->
+<h1 class="page-title">Полезные советы</h1>
+<div class="grid_11" id="advices">
+  <% @advices.each do |a| %>
+    <div class="advice">
+      <h1 class="advice-title">
+        <%= link_to a.title, advice_path(a) %>
+      </h1>
+      <div class="advice-body">
+        <%= raw(more_text(a.body)) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="clear"></div>
+<%= paginate @advices %>

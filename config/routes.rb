@@ -1,18 +1,44 @@
 # -*- encoding : utf-8 -*-
 Crm::Application.routes.draw do
-  
+
   # website:
   root :to => "website/pages#index"
+  # static pages
   match "contacts" => "website/pages#contacts"
   match "about" => "website/pages#about"
+  match "subject/:id" => "website/subject#show", :as => "subweb"
+  # hot deals:
+  match "hot_deals" => "website/deals#index", :as => "hot_deals"
+  # advices:
+  match "advices" => "website/pages#advices", :as => "advices"
+  match "advices/:id" => "website/pages#show_advice", :as => "advice"
+  # states
+  match "states" => "website/pages#states", :as => "states"
+  match "states/:id" => "website/pages#show_state", :as => "state"
+  # all subjects
+  match "all_subjects" => "website/pages#all_subjects", :as => "all_subjects"
   
   # app:
-  
   match "etvans" => 'results#index'
   
   scope "/etvans" do
-    match "search" => 'results#index'
+    # for website:
+    match "website_manage" => "website_manage#index", :as => "website_manage"
     
+    namespace :website do
+      resources :advices
+    end
+    
+    namespace :website do 
+      resources :states 
+    end
+    
+    # end for website
+    
+    
+    # for app:
+    
+    match "search" => 'results#index'
     resources :customeraccesses
 
     resources :paginators, :except => [:new, :create, :destroy]

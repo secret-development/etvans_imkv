@@ -1,0 +1,19 @@
+<h1 class="title-page">
+  <%= link_to "Советы", website_advices_path %> → <%= @advice.title %>
+</h1>
+<%= flash_msg(flash[:notice]) %>
+<div id="m-content-advice">
+  <div class="m-body-advice">
+    <%= raw(@advice.body) %>
+  </div>
+  <div class="m-author-advice">
+    Автор: <%= @advice.author %>
+  </div>
+  <div class="m-created-advice">
+    Дата добавления: <%= to_date(@advice.created_at) %>
+  </div>
+  <div class="m-w-show-actions">
+    <%= link_to "Редактировать", edit_website_advice_path(@advice) %>
+    <%= link_to "Удалить", @advice, :method => :delete, :confirm => "Вы уверены?" %>
+  </div>
+</div>

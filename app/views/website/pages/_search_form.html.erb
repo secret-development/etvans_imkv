@@ -1,0 +1,89 @@
+<%= form_for @search, :url => root_path, 
+  :html => {:method => :get, :id => "search-main-form"} do |f| %>
+<div class="grid_10 push_1" id="search_form">
+  <div class="grid_8 alpha" id="main-elements">
+    <span class="s-f-title">
+      <%= f.label :typetransaction_id_eq, "Я хочу:" %>
+    </span>
+    <!-- тип транзакции -->
+    <%= f.select :typetransaction_id_eq, Result.typetransaction %>
+    <!-- тип недвижимости -->
+    <%= f.collection_select(:typesubject_id_eq,
+        Typesubject.select_search, :id, :name) %>
+    <span class="s-f-title">
+      <%= f.label :city_id_eq, "в городе" %>
+    </span>
+    <%= f.collection_select(:city_id_eq,
+        City.all, :id, :name) %>
+  </div>
+  <div class="grid_1 omega" id="other-elements-button">
+    <a href="#" id="other-elements-icon" title="Дополнительные параметры">
+      <%= image_tag 'website/plus-icon.png', :alt => "Дополнительные параметры" %>
+    </a>
+  </div>
+  <div class="clear"></div>
+  <!-- дополнительные параметры -->
+  <div class="grid_9" id="block-other-elements">
+    <h3 class="other-elements-title">Дополнительные параметры</h3>
+    <!-- ЖК -->
+    <p id="resident-search-block">
+      <span class="s-f-title">
+        <%= f.label :resident_id_eq, "ЖК:" %>
+      </span>
+      <%= f.grouped_collection_select(:resident_id_eq, 
+          City.order(:name), :residents, :name ,:id, :title, :include_blank => true) %>
+    </p>
+    <!-- район -->
+    <p>
+      <span class="s-f-title">
+        <%= f.label :district_id_eq, "Район:" %>
+      </span>
+      <%= f.grouped_collection_select(:district_id_eq, 
+          City.order(:name), :districts, :name ,:id, :title, :include_blank => true) %>
+    </p>
+    <!-- цена -->
+    <p id="room-search-block">
+      <span class="s-f-title">
+        <%= f.label :price_gte, "Цена:" %>
+      </span>
+      <%= f.text_field :price_gte, :class => "price-search-field price-qty" %> 
+      – 
+      <%= f.text_field :price_lte, :class => "price-search-field price-qty" %>
+      <%= f.select :price_currency_eq, Subject.price_cur_search %>
+    </p>
+    <!-- количество комнат -->
+    <p id="floor-search-block">
+      <span class="s-f-title">
+        <%= f.label :room_gte, "Количество комнат:" %>  
+      </span>
+      <%= f.text_field :room_gte, :class => "room-search-field room-qty" %> 
+      – 
+      <%= f.text_field :room_lte, :class => "room-search-field room-qty" %>
+    </p>
+    <!-- площадь -->
+    <p>
+      <span class="s-f-title">
+        <%= f.label :area_gte, "Площадь:" %>
+      </span>
+      <%= f.text_field :area_gte, :class => "area-search-field area-qty" %>
+      –
+      <%= f.text_field :area_lte, :class => "area-search-field area-qty" %>
+      <span class="label-area">м<sup>2</sup></span>
+    </p>
+    <!-- этаж -->
+    <p>
+      <span class="s-f-title">
+        <%= f.label :floor_gte, "Этаж:" %>
+      </span>
+      <%= f.text_field :floor_gte, :class => "floor-search-field floor-qty" %>
+      -
+      <%= f.text_field :floor_lte, :class => "floor-search-field floor-qty" %>
+    </p>
+  </div>
+  <div class="clear"></div>
+  <div class="grid_9">
+    <%= f.submit "Поиск", :id => "button-search" %>  
+  </div>
+</div>
+<div class="clear"></div>
+<% end %>

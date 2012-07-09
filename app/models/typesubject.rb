@@ -62,6 +62,16 @@ class Typesubject < ActiveRecord::Base
     return @fields
   end
   
+  # for website
+  def self.select_search
+    all.each do |n|
+      if n.name.last == "а"
+        size = n.name.size
+        n.name[size-1] = "у"
+      end
+    end
+  end
+  
 end
 
 # == Schema Information

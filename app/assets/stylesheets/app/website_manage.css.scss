@@ -1,0 +1,52 @@
+// Place all the styles related to the website_manage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#website-manage{
+  border:1px dashed #eee;
+  background:#FBFBFB;
+  &:hover{
+    background:#fff;
+  }
+  padding:10px;
+  #list-website-cat{
+    li{
+      margin-top:10px;
+      font-size:18px;
+    }
+  }
+}
+
+// for advice:
+#website_advice_body{
+  width:500px;
+}
+#m-content-advice{
+  border:1px solid #eee;
+  padding:10px;
+  .m-body-advice{
+    font-size:16px;
+    text-align:left;
+    margin-bottom:20px;
+  }
+  .m-author-advice{
+    font-size:11px;
+  }
+  .m-created-advice{
+    font-size:11px;
+  }
+  .m-w-show-actions{
+    margin-top:10px;
+    font-size:11px;
+  }
+}
+
+// for state:
+#website_state_description{
+  width:500px;
+}
+#website_state_photo_js{
+  img{
+    height:300px;
+    width:300px;
+  }
+}
