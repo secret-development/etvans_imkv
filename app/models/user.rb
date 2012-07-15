@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_writer :area_code, :phonemobile1, :phonemobile2
   before_save :phonemobile_merge
   before_update :phonemobile_merge
-  
+
   # remember me
   before_create { generate_token(:auth_token) }
   
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => { :case_sensitive => false}
   validates :email, :presence => true, :format => {:with => email_regex}
   validates :lastname, :firstname, :presence => true
-  validates :phonemobile, :presence => true
+  # validates :phonemobile, :presence => true
   
   def encrypt_password
     if password.present?
@@ -127,6 +127,15 @@ class User < ActiveRecord::Base
   def last_sign
     self.last_sign_in_at = Time.current
     save!    
+  end
+
+  # for site:
+  def user_telephone_in_site
+    if self.fired == true
+      @user = User.where(:role => true, :fired => false).first
+    else
+      self
+    end
   end
   
 end
