@@ -19,7 +19,6 @@ module ApplicationHelper
   def more_text(object, length=700)
     truncate(object, :length => length, :separator => ' ', :omission => "...")
   end
-
   
   # for app:
   def base_title
