@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20120629145437) do
     t.string   "phonemobile"
     t.string   "email"
     t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.boolean  "potentials",         :default => false
     t.integer  "social_status_id"
     t.integer  "typetransaction_id"

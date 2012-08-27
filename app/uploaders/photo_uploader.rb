@@ -42,6 +42,16 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  # process :watermark => "#{Rails.root}/public/uploads/watermark.png"
+
+  # def watermark(path_to_file)
+  #   manipulate! do |img|
+  #     img = img.composite(MiniMagick::Image.open(path_to_file), "png") do |c|
+  #       c.gravity "center"
+  #     end
+  #   end
+  # end
+
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fit => [400, 300]
