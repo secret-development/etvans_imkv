@@ -1,7 +1,13 @@
 <div class="navbar navbar-fixed-top" id="main-menu">
   <div class="navbar-inner">
     <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
       <%= link_to base_title, search_path, :class => "brand" %>
+      <div class="nav-collapse">
       <ul class="nav">
         <li classs="active">
           <%= link_to "Поиск", search_path %>
@@ -107,6 +113,7 @@
           </ul>
         </li>
       </ul>
+    </div>
     </div>
   </div>
 </div>

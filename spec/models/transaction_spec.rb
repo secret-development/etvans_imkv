@@ -6,19 +6,19 @@ describe Transaction do
   
   before(:each) do
 
-    @user = Factory(:user)
-    @city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @district = Factory(:district)
-    @customer = Factory(:customer)
-    @typetransaction = Factory(:typetransaction)
+    @user = FactoryGirl.create(:user)
+    @city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @district = FactoryGirl.create(:district)
+    @customer = FactoryGirl.create(:customer)
+    @typetransaction = FactoryGirl.create(:typetransaction)
     # subject active false
-    @subject_active_false = Factory(:subject_active_false, :typesubject => @typesubject, :city => @city, :customer => @customer, :district => @district)
+    @subject_active_false = FactoryGirl.create(:subject_active_false, :typesubject => @typesubject, :city => @city, :customer => @customer, :district => @district)
     # subject active true
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => @city, 
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => @city, 
         :customer => @customer, :district => @district)
 
-    @transaction = Factory(:transaction, :typetransaction => @typetransaction,
+    @transaction = FactoryGirl.create(:transaction, :typetransaction => @typetransaction,
                     :user => @user, :customer => @customer,
                     :subject => @subject, :user_lastname => @user.lastname)
     

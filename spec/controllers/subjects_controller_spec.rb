@@ -6,22 +6,22 @@ describe SubjectsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @customeraccess = Factory(:customeraccess)
+    @customeraccess = FactoryGirl.create(:customeraccess)
     
-    @city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @typetransaction = Factory(:typetransaction)
-    soc = Factory(:social_status)
-    @customer = Factory(:customer, :typetransaction => @typetransaction, :social_status => soc)
-    @district = Factory(:district)
-    @resident = Factory(:resident)
+    @city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @typetransaction = FactoryGirl.create(:typetransaction)
+    soc = FactoryGirl.create(:social_status)
+    @customer = FactoryGirl.create(:customer, :typetransaction => @typetransaction, :social_status => soc)
+    @district = FactoryGirl.create(:district)
+    @resident = FactoryGirl.create(:resident)
     
     # main subject
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => @city,
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => @city,
                 :typetransaction => @typetransaction, :customer => @customer, :district => @district, :resident => @resident, :user => @user)
   end
   
@@ -109,8 +109,8 @@ describe SubjectsController do
     
     describe "success when condition_fields > 0" do
       before(:each) do
-        @typesubject_with_cond = Factory(:withcond)
-        @condition = Factory(:condition_field, :typesubject => @typesubject_with_cond)
+        @typesubject_with_cond = FactoryGirl.create(:withcond)
+        @condition = FactoryGirl.create(:condition_field, :typesubject => @typesubject_with_cond)
         @attr = properties_data
         session[:customer_id] = @customer.id
       end

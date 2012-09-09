@@ -6,7 +6,7 @@ describe UsersController do
   describe "admin user" do
     before(:each) do
       # start auth
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_log_in(@user)
       # end auth
       @new_user = { 
@@ -62,9 +62,9 @@ describe UsersController do
   
   describe "regular user" do
     before(:each) do  
-      @regular_user = Factory(:regular_user) 
+      @regular_user = FactoryGirl.create(:regular_user) 
       test_log_in(@regular_user)
-      @other = Factory(:user)
+      @other = FactoryGirl.create(:user)
       @attr = { :email => "agent007@mail.ru"}
     end
       
@@ -90,9 +90,9 @@ describe UsersController do
   
   describe "destroy" do
     before(:each) do
-      @user_d = Factory(:user)
+      @user_d = FactoryGirl.create(:user)
       test_log_in(@user_d)
-      @user_d2 = Factory(:user2)
+      @user_d2 = FactoryGirl.create(:user2)
       test_log_in(@user_d2)
     end
     

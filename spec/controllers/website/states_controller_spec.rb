@@ -6,11 +6,11 @@ describe Website::StatesController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @state = Factory(:state)
+    @state = FactoryGirl.create(:state)
   end
   
   describe "success requests" do

@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Typetransaction do
   before(:each) do
-    @typetransaction = Factory(:typetransaction)
+    @typetransaction = FactoryGirl.create(:typetransaction)
     
     # valid data
     @attr = {

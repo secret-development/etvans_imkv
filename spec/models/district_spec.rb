@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe District do
   before(:each) do
-    @city = Factory(:city)
-    @district = Factory(:district, :city => @city)
+    @city = FactoryGirl.create(:city)
+    @district = FactoryGirl.create(:district, :city => @city)
     @attr = {
       :city_id => 1,
       :title => "КЖБИ"

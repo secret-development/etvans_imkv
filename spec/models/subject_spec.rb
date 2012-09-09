@@ -3,19 +3,19 @@ require 'spec_helper'
 
 describe Subject do
   before(:each) do
-    @city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @district = Factory(:district)
-    @resident = Factory(:resident)
-    @customer = Factory(:customer)
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => @city, 
+    @city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @district = FactoryGirl.create(:district)
+    @resident = FactoryGirl.create(:resident)
+    @customer = FactoryGirl.create(:customer)
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => @city, 
         :customer => @customer, :district => @district, :resident => @resident)
     
     # typesubject without floor
-    @withourfloor = Factory(:withourfloor)
+    @withourfloor = FactoryGirl.create(:withourfloor)
     
     # typesubject without room
-    @withoutroom = Factory(:withoutroom)
+    @withoutroom = FactoryGirl.create(:withoutroom)
     
     # price_currency
     @pricecur = {
@@ -26,7 +26,7 @@ describe Subject do
     }
     
     # properties
-    @properties = Factory(:property, :subject => @subject)
+    @properties = FactoryGirl.create(:property, :subject => @subject)
     
     # valid attributes
     @attr = {

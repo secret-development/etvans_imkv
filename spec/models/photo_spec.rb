@@ -3,13 +3,13 @@ require 'spec_helper'
 
 describe Photo do
   before(:each) do
-    @city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @district = Factory(:district)
-    @customer = Factory(:customer)
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => @city, 
+    @city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @district = FactoryGirl.create(:district)
+    @customer = FactoryGirl.create(:customer)
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => @city, 
         :customer => @customer, :district => @district)
-    @photo = Factory(:photo, :subject => @subject)
+    @photo = FactoryGirl.create(:photo, :subject => @subject)
     @attr = {
       :subject_id => @subject.id,
       :image => "ls.png"

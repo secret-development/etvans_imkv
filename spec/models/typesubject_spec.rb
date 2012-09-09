@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Typesubject do
   
   before(:each) do
-    @typesubject = Factory(:typesubject)
+    @typesubject = FactoryGirl.create(:typesubject)
     
     # valid data
     @attr = {
@@ -138,8 +138,8 @@ describe Typesubject do
   
   describe "fields" do
     before(:each) do
-      @conditionfield = Factory(:condition_field, :typesubject => @typesubject)
-      @valuefield = Factory(:value_field, :condition_field => @conditionfield)
+      @conditionfield = FactoryGirl.create(:condition_field, :typesubject => @typesubject)
+      @valuefield = FactoryGirl.create(:value_field, :condition_field => @conditionfield)
       @attr2 = {
         :namefield => "Состояние",
         :typefield => "select",

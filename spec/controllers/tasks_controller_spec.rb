@@ -9,11 +9,11 @@ describe TasksController do
   before(:each) do
     
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @task = Factory(:task, :user => @user, :user_lastname => @user.lastname)
+    @task = FactoryGirl.create(:task, :user => @user, :user_lastname => @user.lastname)
   end
   
   it "get show" do

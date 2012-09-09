@@ -6,8 +6,8 @@ require 'spec_helper'
 describe Task do
   
   before(:each) do
-    @user = Factory(:user)
-    @task = Factory(:task, :user => @user, :user_lastname => @user.lastname)
+    @user = FactoryGirl.create(:user)
+    @task = FactoryGirl.create(:task, :user => @user, :user_lastname => @user.lastname)
     
     @attr = {
       :title => "MyTask",

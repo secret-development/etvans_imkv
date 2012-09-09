@@ -6,7 +6,7 @@ describe CustomersController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     @attr = {
@@ -21,18 +21,18 @@ describe CustomersController do
       :user_id => @user.id
     }
     
-    @customeraccess = Factory(:customeraccess)
+    @customeraccess = FactoryGirl.create(:customeraccess)
     
-    soc = Factory(:social_status)
-    typetr = Factory(:typetransaction)
-    @customer = Factory(:customer, :typetransaction => typetr, :social_status => soc, :user => @user)
+    soc = FactoryGirl.create(:social_status)
+    typetr = FactoryGirl.create(:typetransaction)
+    @customer = FactoryGirl.create(:customer, :typetransaction => typetr, :social_status => soc, :user => @user)
     
     # subject factory
-    city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    typetransaction = Factory(:typetransaction)
-    @district = Factory(:district)
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => city,
+    city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    typetransaction = FactoryGirl.create(:typetransaction)
+    @district = FactoryGirl.create(:district)
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => city,
                 :typetransaction => typetransaction, :customer => @customer, :district => @district)
     # subject factory
 

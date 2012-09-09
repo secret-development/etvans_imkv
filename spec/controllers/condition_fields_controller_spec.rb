@@ -6,11 +6,11 @@ describe ConditionFieldsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    typesubject = Factory(:typesubject)
-    @conditionfield = Factory(:condition_field, :typesubject => typesubject)
+    typesubject = FactoryGirl.create(:typesubject)
+    @conditionfield = FactoryGirl.create(:condition_field, :typesubject => typesubject)
   end
   
   it "get index" do

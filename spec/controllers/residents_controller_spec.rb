@@ -6,11 +6,11 @@ describe ResidentsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    @city = Factory(:city)
-    @resident = Factory(:resident, :city => @city)
+    @city = FactoryGirl.create(:city)
+    @resident = FactoryGirl.create(:resident, :city => @city)
   end
   
   it "get 'index'" do

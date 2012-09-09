@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe Resident do
   before(:each) do
-    @city = Factory(:city)
-    @resident = Factory(:resident, :city => @city)
+    @city = FactoryGirl.create(:city)
+    @resident = FactoryGirl.create(:resident, :city => @city)
     @attr = {
       :city_id => 1,
       :title => "Сайран"

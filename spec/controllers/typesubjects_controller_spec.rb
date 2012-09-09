@@ -8,11 +8,11 @@ describe TypesubjectsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @typesubject = Factory(:typesubject)
+    @typesubject = FactoryGirl.create(:typesubject)
   end
   
   it "get :index" do

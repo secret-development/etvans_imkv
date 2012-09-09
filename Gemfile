@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', "~> 3.2.1"
+gem 'rails', "~> 3.2.8"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -10,7 +10,7 @@ gem "rake", "~> 0.9.2"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.4'
+  gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', ">= 1.0.3"
   gem 'therubyracer'
@@ -52,26 +52,29 @@ gem 'backup'
 gem 'dropbox-sdk', '~> 1.1.0'
 
 group :development do
-  gem "awesome_print", "~> 1.0.2"
-  gem "magic_encoding", "~> 0.0.2"  
+  gem "awesome_print"
+  gem "magic_encoding"
   # annotate model:
-  gem 'annotate', '~> 2.4.1.beta'
-  gem "rspec", "~> 2.8.0"
-  gem "rspec-rails", "~> 2.8.1"
+  gem 'annotate'
+  gem "rspec", "~> 2.10.0"
+  gem "rspec-rails", "~> 2.10.0"
+  gem "factory_girl", "~> 4.0.0"
+  gem "factory_girl_rails", "~> 4.0.0"
 end
 
 group :test do
   gem 'spork', '~> 1.0rc'
-  gem "rspec", "~> 2.8.0"
-  gem "rspec-rails", "~> 2.8.1"
+  gem "rspec", "~> 2.10.0"
+  gem "rspec-rails", "~> 2.10.0"
   gem "capybara", "~> 1.1.2"
   gem "watchr"
-  gem 'factory_girl_rails'
+  gem "factory_girl", "~> 4.0.0"
+  gem "factory_girl_rails", "~> 4.0.0"
   gem "database_cleaner", "~> 0.7.1"
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
   gem 'simplecov', :require => false
   # annotate model:
-  gem 'annotate', '~> 2.4.1.beta'
+  gem 'annotate'
   gem 'mini_magick'
 end
