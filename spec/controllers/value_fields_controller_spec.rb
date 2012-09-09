@@ -6,12 +6,12 @@ describe ValueFieldsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    @typesubject = Factory(:typesubject)
-    @conditionfield = Factory(:condition_field, :typesubject => @typesubject)
-    @valuefield = Factory(:value_field, :condition_field => @conditionfield)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @conditionfield = FactoryGirl.create(:condition_field, :typesubject => @typesubject)
+    @valuefield = FactoryGirl.create(:value_field, :condition_field => @conditionfield)
     @attr = {
       :valuefield => "Нет",
       :condition_field_id => @conditionfield.id

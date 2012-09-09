@@ -6,10 +6,10 @@ describe SocialStatusesController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    @socialstatus = Factory(:social_status)
+    @socialstatus = FactoryGirl.create(:social_status)
   end
   
   it "GET 'new'" do

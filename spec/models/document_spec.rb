@@ -5,18 +5,18 @@ require 'spec_helper'
 describe Document do
   
   before(:each) do
-    @user = Factory(:user)
-    @city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @district = Factory(:district)
-    @customer = Factory(:customer)
-    @typetransaction = Factory(:typetransaction)
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => @city, 
+    @user = FactoryGirl.create(:user)
+    @city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @district = FactoryGirl.create(:district)
+    @customer = FactoryGirl.create(:customer)
+    @typetransaction = FactoryGirl.create(:typetransaction)
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => @city, 
         :customer => @customer, :district => @district)
-    @transaction = Factory(:transaction, :typetransaction => @typetransaction,
+    @transaction = FactoryGirl.create(:transaction, :typetransaction => @typetransaction,
                     :user => @user, :customer => @customer,
                     :subject => @subject)
-    @document = Factory(:document, :transaction => @transaction)
+    @document = FactoryGirl.create(:document, :transaction => @transaction)
     
     @attr = {
       :transaction_id => @transaction.id,

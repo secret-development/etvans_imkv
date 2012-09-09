@@ -6,11 +6,11 @@ describe PaginatorsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @paginator = Factory(:paginator)
+    @paginator = FactoryGirl.create(:paginator)
   end
   
   it "get index" do

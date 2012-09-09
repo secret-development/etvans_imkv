@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Paginator do
   before(:each) do
-    @paginator = Factory(:paginator)
+    @paginator = FactoryGirl.create(:paginator)
     
     @attr = {
       :resource => "клиенты",

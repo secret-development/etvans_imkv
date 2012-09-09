@@ -5,9 +5,9 @@ describe Phone do
   before(:each) do
     # factory:
     
-    @user = Factory(:user)
-    @customer = Factory(:customer, :user => @user)
-    @phone = Factory(:phone, :customer => @customer)
+    @user = FactoryGirl.create(:user)
+    @customer = FactoryGirl.create(:customer, :user => @user)
+    @phone = FactoryGirl.create(:phone, :customer => @customer)
     # attributes:
     @attr = {
       :customerphone => "+ 7 755 434 334 43",

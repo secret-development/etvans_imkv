@@ -86,7 +86,7 @@ describe User do
   end
   # password reset
   describe "send password reset" do
-    let(:user) {Factory(:user)}
+    let(:user) {FactoryGirl.create(:user)}
     
     it "generate a unique password reset token" do
       user.send_password_reset

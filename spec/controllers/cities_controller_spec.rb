@@ -6,10 +6,10 @@ describe CitiesController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    @city = Factory(:city)
+    @city = FactoryGirl.create(:city)
   end
   
   it "get index" do

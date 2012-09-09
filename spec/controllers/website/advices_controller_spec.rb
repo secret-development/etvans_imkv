@@ -7,11 +7,11 @@ describe Website::AdvicesController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
     
-    @advice = Factory(:tip)
+    @advice = FactoryGirl.create(:tip)
   end
   
   it "get :index" do

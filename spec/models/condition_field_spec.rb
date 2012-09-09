@@ -18,8 +18,8 @@ describe ConditionField do
       :typesubject_id => 2
     }
     
-    @typesubject = Factory(:typesubject)
-    @conditionfield = Factory(:condition_field, :typesubject => @typesubject)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @conditionfield = FactoryGirl.create(:condition_field, :typesubject => @typesubject)
     
   end
   

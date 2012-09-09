@@ -4,7 +4,7 @@ require 'spec_helper'
 describe ReportsController do
   
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
   end
   

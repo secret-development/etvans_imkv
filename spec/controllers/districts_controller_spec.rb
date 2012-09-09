@@ -7,11 +7,11 @@ describe DistrictsController do
   
   before(:each) do
     # start auth
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end auth
-    @city = Factory(:city)
-    @district = Factory(:district, :city => @city)
+    @city = FactoryGirl.create(:city)
+    @district = FactoryGirl.create(:district, :city => @city)
   end
   
   it "get 'index'" do

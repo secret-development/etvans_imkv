@@ -8,21 +8,21 @@ describe TransactionsController do
   
   before(:each) do
     # login
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     test_log_in(@user)
     # end login
     
-    @typetransaction = Factory(:typetransaction)
+    @typetransaction = FactoryGirl.create(:typetransaction)
 
-    city = Factory(:city)
-    @typesubject = Factory(:typesubject)
-    @customer = Factory(:customer)
-    @district = Factory(:district)
-    @subject = Factory(:subject, :typesubject => @typesubject, :city => city,
+    city = FactoryGirl.create(:city)
+    @typesubject = FactoryGirl.create(:typesubject)
+    @customer = FactoryGirl.create(:customer)
+    @district = FactoryGirl.create(:district)
+    @subject = FactoryGirl.create(:subject, :typesubject => @typesubject, :city => city,
               :typetransaction => @typetransaction, :customer => @customer,
               :district => @district)
 
-    @transaction = Factory(:transaction, :typetransaction => @typetransaction,
+    @transaction = FactoryGirl.create(:transaction, :typetransaction => @typetransaction,
                   :user => @user, :user_lastname => @user.lastname, 
                   :customer => @customer, :subject => @subject)
                   
