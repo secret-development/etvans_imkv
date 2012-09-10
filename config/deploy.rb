@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
-require 'bundler/capistrano'
-load 'deploy/assets'
+
 # set up
 set :application, "ipotekacenter"
 set :scm, :git
