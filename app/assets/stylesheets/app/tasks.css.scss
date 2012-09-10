@@ -64,12 +64,12 @@
 }
 
 #tasks_table th .asc { 
-  background-image: url(sort_asc.png);
+  background-image: url(/assets/sort_asc.png);
 }
 #tasks_table th .desc { 
-  background-image: url(sort_desc.png); 
+  background-image: url(/assets/sort_desc.png); 
 }
 #not_done_task{
   //background: #B6E4F8;
-  background: #B6E4F8 url(ui-bg_glass_80_d7ebf9_1x400.png) 50% 50% repeat-x;
+  background: #B6E4F8 url(/assets/ui-bg_glass_80_d7ebf9_1x400.png) 50% 50% repeat-x;
 }

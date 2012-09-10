@@ -23,11 +23,6 @@ module Crm
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-
-    # images
-    config.assets.paths << Rails.root.join("app", "assets", "images")
-    config.assets.paths << Rails.root.join("app", "assets", "images", "app")
-    config.assets.paths << Rails.root.join("app", "assets", "images", "website")
     # js
     config.assets.paths << Rails.root.join("app", "assets", "javascripts", "app")
     config.assets.paths << Rails.root.join("app", "assets", "javascripts", "website")
@@ -37,8 +32,6 @@ module Crm
     config.assets.paths << Rails.root.join("app", "assets", "javascript", "website", "960gs")
     
     
-
-
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
