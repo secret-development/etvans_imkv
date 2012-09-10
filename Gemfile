@@ -50,6 +50,7 @@ gem 'mini_magick'
 # for backup
 gem 'backup'
 gem 'dropbox-sdk', '~> 1.1.0'
+gem "i18n", "~> 0.6.1"
 
 group :development do
   gem "awesome_print"
