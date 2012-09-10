@@ -5,15 +5,17 @@ $main-color:#373737;
 $element-color:#696969;
   // links:
   $link-color:#6A6A6A;
-  $link-color-hover:#2B2B2B;
+  $link-color-hover:#1185c5;
 
 // header:
 #header{
-  height:90px;
+  height:110px;
 }
 #header-description{
   font-family:Arial;
-  font-size:11px;
+  font-size:13px;
+  width:400px;
+  margin-left:80px;
   padding-top:33px;
   color:$main-color;
 }
@@ -234,4 +236,8 @@ a{
   font-weight:bold;
   font-size:12px;
   color:#A54545;
+}
+
+.website_logo{
+  margin-top:20px;
 }
