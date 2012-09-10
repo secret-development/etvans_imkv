@@ -25,6 +25,7 @@ module Crm
     # config.autoload_paths += %W(#{config.root}/extras)
 
     # images
+    config.assets.paths << Rails.root.join("app", "assets", "images")
     config.assets.paths << Rails.root.join("app", "assets", "images", "app")
     config.assets.paths << Rails.root.join("app", "assets", "images", "website")
     # js
