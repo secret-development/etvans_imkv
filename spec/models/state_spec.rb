@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe Website::State do
+describe State do
   before(:each) do
     @attr = {
       :title => "Радуга",
@@ -11,22 +11,22 @@ describe Website::State do
   end
   
   it "should create a new object" do
-    Website::State.create!(@attr)
+    State.create!(@attr)
   end
   
   describe "validations" do
     it "should presence title" do
-      state = Website::State.new(@attr.merge(:title => nil))
+      state = State.new(@attr.merge(:title => nil))
       state.should_not be_valid
     end
     
     it "should presence description" do
-      state = Website::State.new(@attr.merge(:description => nil))
+      state = State.new(@attr.merge(:description => nil))
       state.should_not be_valid
     end
     
     it "should presence address" do
-      state = Website::State.new(@attr.merge(:address => nil))
+      state = State.new(@attr.merge(:address => nil))
       state.should_not be_valid
     end
   end

@@ -1,5 +1,5 @@
 <h1 class="title-page">
-  <%= link_to "Информация о ЖК", website_states_path %> → <%= @state.title %>
+  <%= link_to "Информация о ЖК", e_states_path %> → <%= @state.title %>
 </h1>
 <%= flash_msg(flash[:notice]) %>
 <div id="m-content-advice">
@@ -15,7 +15,7 @@
     Адрес: <%= @state.address %>
   </div>
   <div class="m-w-show-actions">
-    <%= link_to "Редактировать", edit_website_state_path(@state) %>
-    <%= link_to "Удалить", @state, :method => :delete, :confirm => "Вы уверены?" %>
+    <%= link_to "Редактировать", edit_e_state_path(@state) %>
+    <%= link_to "Удалить", e_state_path(@state), :method => :delete, :confirm => "Вы уверены?" %>
   </div>
 </div>

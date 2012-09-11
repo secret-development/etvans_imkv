@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe Website::Advice do
+describe Advice do
   
   before(:each) do
     @attr = {
@@ -12,22 +12,22 @@ describe Website::Advice do
   end
   
   it "should create a new instance with valid attributes" do
-    Website::Advice.create!(@attr)
+    Advice.create!(@attr)
   end
   
   describe "validations" do
     it "should presence title" do
-      advice = Website::Advice.new(@attr.merge(:title => nil))
+      advice = Advice.new(@attr.merge(:title => nil))
       advice.should_not be_valid
     end
     
     it "should presence body" do
-      advice = Website::Advice.new(@attr.merge(:body => nil))
+      advice = Advice.new(@attr.merge(:body => nil))
       advice.should_not be_valid
     end
     
     it "should presence author" do
-      advice = Website::Advice.new(@attr.merge(:author => nil))
+      advice = Advice.new(@attr.merge(:author => nil))
       advice.should_not be_valid
     end
   end

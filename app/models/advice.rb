@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Website::Advice < ActiveRecord::Base
+class Advice < ActiveRecord::Base
   
   # validations:
   validates :title, :presence => true

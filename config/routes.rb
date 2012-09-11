@@ -25,13 +25,9 @@ Crm::Application.routes.draw do
     # for website:
     match "website_manage" => "website_manage#index", :as => "website_manage"
     
-    namespace :website do
-      resources :advices
-    end
-    
-    namespace :website do 
-      resources :states 
-    end
+
+    resources :advices, :as => "e_advices"
+    resources :states, :as => "e_states"
     
     # end for website
     
