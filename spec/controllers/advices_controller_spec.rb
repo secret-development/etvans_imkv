@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe Website::AdvicesController do
+describe AdvicesController do
   
   render_views
   
@@ -41,14 +41,14 @@ describe Website::AdvicesController do
       end
       
       it "should render the new page" do
-        post :create, :website_advice => @attr
+        post :create, :advice => @attr
         response.should render_template("new")
       end
       
       it "should not create advice" do
         lambda do
-          post :create, :website_adivce => @attr
-        end.should_not change(Website::Advice, :count)
+          post :create, :advice => @attr
+        end.should_not change(Advice, :count)
       end
     end
     
@@ -58,18 +58,18 @@ describe Website::AdvicesController do
       end
       
       it "should redirect_to to advices path" do
-        post :create, :website_advice => @attr
-        response.should redirect_to(website_advices_path)
+        post :create, :advice => @attr
+        response.should redirect_to(e_advices_path)
       end
       
       it "should create advice object" do
         lambda do
-          post :create, :website_advice => @attr
-        end.should change(Website::Advice, :count).by(1)
+          post :create, :advice => @attr
+        end.should change(Advice, :count).by(1)
       end
       
       it "should have a success message" do
-        post :create, :website_advice => @attr
+        post :create, :advice => @attr
         flash[:notice].should =~ /Совет успешно сохранён/i
       end
     end
@@ -82,14 +82,14 @@ describe Website::AdvicesController do
       end
       
       it "should render the 'edit' page" do
-        put :update, :id => @advice.id, :website_advice => @attr
+        put :update, :id => @advice.id, :advice => @attr
         response.should render_template('edit')
       end
       
       it "should not create advice object" do
         lambda do
-          put :update, :id => @advice.id, :website_advice => @attr
-        end.should_not change(Website::Advice, :count)
+          put :update, :id => @advice.id, :advice => @attr
+        end.should_not change(Advice, :count)
       end
     end
     
@@ -99,18 +99,18 @@ describe Website::AdvicesController do
       end
       
       it "should redirect_to website_advices_path" do
-        put :update, :id => @advice.id, :website_advice => @attr
-        response.should redirect_to(website_advices_path)
+        put :update, :id => @advice.id, :advice => @attr
+        response.should redirect_to(e_advices_path)
       end
       
       it "should not create advice object" do
         lambda do
-          put :update, :id => @advice.id, :website_advice => @attr  
-        end.should_not change(Website::Advice, :count)
+          put :update, :id => @advice.id, :advice => @attr  
+        end.should_not change(Advice, :count)
       end
       
       it "should success message" do
-        put :update, :id => @advice.id, :website_advice => @attr
+        put :update, :id => @advice.id, :advice => @attr
         flash[:notice].should =~ /Совет успешно обновлён/i
       end
     end
@@ -119,14 +119,14 @@ describe Website::AdvicesController do
   describe "DELET 'destroy'" do
     it "should redirect_to website_advices_path" do
       delete :destroy, :id => @advice
-      response.should redirect_to(website_advices_path)
+      response.should redirect_to(e_advices_path)
     end
     
     it "should destroy advice object" do
       lambda do
         delete :destroy, :id => @advice
-        response.should redirect_to(website_advices_path)  
-      end.should change(Website::Advice, :count).by(-1)
+        response.should redirect_to(e_advices_path)  
+      end.should change(Advice, :count).by(-1)
     end
     
     it "should success message" do

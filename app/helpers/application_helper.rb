@@ -201,17 +201,17 @@ module ApplicationHelper
   
   def active_subject?(object)
     if object.active == true
-      image_tag('app/active.png', :title => "Активен", :rel => "tooltip")
+      image_tag('/assets/active.png', :title => "Активен", :rel => "tooltip")
     else
-      image_tag('app/busy.png', :title => "Не активен", :rel => "tooltip")
+      image_tag('/assets/busy.png', :title => "Не активен", :rel => "tooltip")
     end
   end
   
   def customer_act?(object)
     if object.potentials == true
-      image_tag('app/customer_pot.gif', :title => "Потенциальный клиент", :rel => "tooltip")
+      image_tag('/assets/customer_pot.gif', :title => "Потенциальный клиент", :rel => "tooltip")
     else
-      image_tag('app/customer_act.gif', :title => "Действующий клиент", :rel => "tooltip")
+      image_tag('/assets/customer_act.gif', :title => "Действующий клиент", :rel => "tooltip")
     end
   end
   

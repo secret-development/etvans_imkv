@@ -30,7 +30,7 @@
     top:100px;
     right:170px;
     position:relative;
-    background:url('phone-call.png') no-repeat 60px 0px;
+    background:url('/assets/phone-call.png') no-repeat 60px 0px;
     height:130px;
     #man-called-but{
       position:relative;
@@ -108,10 +108,10 @@
 }
 
 #customers_table th .asc { 
-  background-image: url(sort_asc.png);
+  background-image: url(/assets/sort_asc.png);
 }
 #customers_table th .desc { 
-  background-image: url(sort_desc.png); 
+  background-image: url(/assets/sort_desc.png); 
 }
 .customer-note{
   background:#ffffff;
