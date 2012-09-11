@@ -75,7 +75,7 @@ class Customer < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where('lastname LIKE ? OR firstname LIKE ?', "%#{search}%", "%#{search}%")
+      where('lastname LIKE ? OR firstname LIKE ? OR phonemobile LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
     else
       scoped
     end 
