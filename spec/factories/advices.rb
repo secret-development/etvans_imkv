@@ -2,7 +2,7 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :tip, :class => Website::Advice do
+  factory :tip, :class => Advice do
     title "one"
     body "test text"
     author "Ivanov"

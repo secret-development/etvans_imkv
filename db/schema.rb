@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629145437) do
+ActiveRecord::Schema.define(:version => 20120911054149) do
+
+  create_table "advices", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "author"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -98,6 +106,13 @@ ActiveRecord::Schema.define(:version => 20120629145437) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "states", :force => true do |t|
+    t.string "title"
+    t.text   "description"
+    t.string "address"
+    t.string "jk"
   end
 
   create_table "subjects", :force => true do |t|
@@ -191,21 +206,6 @@ ActiveRecord::Schema.define(:version => 20120629145437) do
     t.integer  "condition_field_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-  end
-
-  create_table "website_advices", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "author"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "website_states", :force => true do |t|
-    t.string "title"
-    t.text   "description"
-    t.string "address"
-    t.string "jk"
   end
 
   create_table "worktimes", :force => true do |t|

@@ -1,5 +1,4 @@
-<%= form_for(@advice, 
-  :html => { :class => "form-horizontal customer-form-validation"}) do |f| %>
+<%= form_for(@advice, :url => (e_advices_path(params[:advice])), :html => { :class => "form-horizontal customer-form-validation"}) do |f| %>
   <%= error_messages_for(@advice) %>
   <fieldset>
     <legend><%= @advice.legend_value %></legend>

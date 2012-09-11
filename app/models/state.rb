@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Website::State < ActiveRecord::Base
+class State < ActiveRecord::Base
   # validations:
   validates :title, :presence => true
   validates :description, :presence => true

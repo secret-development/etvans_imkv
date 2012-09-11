@@ -28,12 +28,12 @@ class Website::PagesController < ApplicationController
   
   def advices
     @w_title = "Полезные советы"
-    @advices = Website::Advice.page(params[:page]).per(5)
+    @advices = Advice.page(params[:page]).per(5)
     respond_with(@advices)
   end
   
   def show_advice
-    @advice = Website::Advice.find(params[:id])
+    @advice = Advice.find(params[:id])
     @w_title = @advice.title
     respond_with(@advice)
   end
@@ -42,12 +42,12 @@ class Website::PagesController < ApplicationController
   
   def states
     @w_title = "Информация по ЖК"
-    @states = Website::State.page(params[:page]).per(5)
+    @states = State.page(params[:page]).per(5)
     respond_with(@states)
   end
   
   def show_state
-    @state = Website::State.find(params[:id])
+    @state = State.find(params[:id])
     @w_title = @state.title
     respond_with(@state)
   end

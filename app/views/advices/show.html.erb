@@ -1,5 +1,5 @@
 <h1 class="title-page">
-  <%= link_to "Советы", website_advices_path %> → <%= @advice.title %>
+  <%= link_to "Советы", e_advices_path %> → <%= @advice.title %>
 </h1>
 <%= flash_msg(flash[:notice]) %>
 <div id="m-content-advice">
@@ -13,7 +13,7 @@
     Дата добавления: <%= to_date(@advice.created_at) %>
   </div>
   <div class="m-w-show-actions">
-    <%= link_to "Редактировать", edit_website_advice_path(@advice) %>
-    <%= link_to "Удалить", @advice, :method => :delete, :confirm => "Вы уверены?" %>
+    <%= link_to "Редактировать", edit_e_advice_path(@advice) %>
+    <%= link_to "Удалить", e_advice_path(@advice), :method => :delete, :confirm => "Вы уверены?" %>
   </div>
 </div>

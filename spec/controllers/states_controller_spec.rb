@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe Website::StatesController do
+describe StatesController do
   render_views
   
   before(:each) do
@@ -43,14 +43,14 @@ describe Website::StatesController do
       end
       
       it "should render the new page" do
-        post :create, :website_state => @attr
+        post :create, :state => @attr
         response.should render_template('new')
       end
       
       it "should not create the state object" do
         lambda do
-          post :create, :website_state => @attr
-        end.should_not change(Website::State, :count)
+          post :create, :state => @attr
+        end.should_not change(State, :count)
       end
     end
     
@@ -60,18 +60,18 @@ describe Website::StatesController do
       end
       
       it "should redirect_to index path" do
-        post :create, :website_state => @attr
-        response.should redirect_to(website_states_path)
+        post :create, :state => @attr
+        response.should redirect_to(e_states_path)
       end
       
       it "should create state object" do
         lambda do
-          post :create, :website_state => @attr
-        end.should change(Website::State, :count).by(1)
+          post :create, :state => @attr
+        end.should change(State, :count).by(1)
       end
       
       it "should have a success message" do
-        post :create, :website_state => @attr
+        post :create, :state => @attr
         flash[:notice].should =~ /Информация успешно сохранена/i
       end
     end
@@ -86,14 +86,14 @@ describe Website::StatesController do
       end
       
       it "should render 'edit' template" do
-        put :update, :id => @state.id, :website_state => @attr
+        put :update, :id => @state.id, :state => @attr
         response.should render_template('edit')
       end
       
       it "should not create a state object" do
         lambda do
-          put :update, :id => @state.id, :website_state => @attr
-        end.should_not change(Website::State, :count)
+          put :update, :id => @state.id, :state => @attr
+        end.should_not change(State, :count)
       end
     end
     
@@ -102,19 +102,19 @@ describe Website::StatesController do
         @attr = valid_data
       end
       
-      it "should redirect to website_states_path" do
-        put :update, :id => @state.id, :website_state => @attr
-        response.should redirect_to(website_states_path)
+      it "should redirect to states_path" do
+        put :update, :id => @state.id, :state => @attr
+        response.should redirect_to(e_states_path)
       end
       
       it "should not create state object" do
         lambda do
-          put :update, :id => @state.id, :website_state => @attr
-        end.should_not change(Website::State, :count)
+          put :update, :id => @state.id, :state => @attr
+        end.should_not change(State, :count)
       end
       
       it "should success message" do
-        put :update, :id => @state.id, :website_state => @attr
+        put :update, :id => @state.id, :state => @attr
         flash[:notice].should =~ /Информация успешно обновлена/
       end
     end
@@ -123,15 +123,15 @@ describe Website::StatesController do
   
   
   describe "DELETE 'destroy'" do
-    it "should redirect to website_states_path" do
+    it "should redirect to states_path" do
       delete :destroy, :id => @state.id
-      response.should redirect_to(website_states_path)
+      response.should redirect_to(e_states_path)
     end
     
     it "should destroy state object" do
       lambda do
         delete :destroy, :id => @state.id
-      end.should change(Website::State, :count).by(-1)
+      end.should change(State, :count).by(-1)
     end
     
     it "should success message" do

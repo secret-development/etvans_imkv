@@ -2,7 +2,7 @@
   <%= link_to "Управление сайтом", website_manage_path %> → Информация о ЖК
 </h1>
 <%= flash_msg(flash[:notice]) %>
-<%= link_to plus_icon + " Добавить" , new_website_state_path, :class => "btn button-add" %>
+<%= link_to plus_icon + " Добавить" , new_e_state_path, :class => "btn button-add" %>
 <div id="website-manage">
   <table class="table table-striped table-condensed customers" id="advice_table">
     <thead>
@@ -19,8 +19,8 @@
           <td><%= link_to s.title, s %></td>
           <td><%= s.address %></td>
           <td class="actions-buttons">
-            <%= link_to edit_icon, edit_website_state_path(s) %>
-            <%= link_to delete_icon, s, :method => :delete, :confirm => "Вы уверены?" %>
+            <%= link_to edit_icon, edit_e_state_path(s) %>
+            <%= link_to delete_icon, e_state_path(s), :method => :delete, :confirm => "Вы уверены?" %>
           </td>
         </tr>      
         <% end %>
