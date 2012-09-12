@@ -55,6 +55,9 @@
       <%= puts_properties(@subject) %>
     </div>
     <div class="subject-show-field">
+      <%= @subject.note %>
+    </div>
+    <div class="subject-show-field">
       Дата добавления: <%= to_date(@subject.created_at) %>
     </div>
     <div class="subject-show-field subject-real-telephone">
