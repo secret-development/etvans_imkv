@@ -29,7 +29,7 @@
       <b><%= active_subject_text?(@subject) %></b>
     </div>
     <div class="subject-show-field">
-      Адресс: <%= @subject.address %>
+      Адрес: <%= @subject.street_src %>
     </div>
     <% if have_object?(@subject.floor) %>
       <div class="subject-show-field">
@@ -75,5 +75,9 @@
     </div>
   <% end %>
   <!--  / фотографии -->
+  <div class="clear-share">
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="icon" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
+  </div>
 </div>
 <div class="clear"></div>
