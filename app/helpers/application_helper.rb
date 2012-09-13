@@ -6,9 +6,9 @@ module ApplicationHelper
   # for website:
   def w_title
     if @w_title
-      "Империя квартир | #{@w_title}"
+      "Ипотека центр | #{@w_title}"
     else
-      "Империя квартир"
+      "Ипотека центр"
     end
   end
   
