@@ -16,7 +16,7 @@ group :assets do
   gem 'therubyracer'
 end
 
-gem 'jquery-rails', "~> 2.2.0"
+gem 'jquery-rails', "~> 2.1.4"
 gem "kaminari", "~> 0.13.0"
 gem 'validates_timeliness', '~> 3.0.2'
 gem 'jquery_datepicker'
