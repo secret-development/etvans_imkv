@@ -1,21 +1,20 @@
 # -*- encoding : utf-8 -*-
 
 # set up
-set :application, "ipotekacenter"
+set :application, "ipoteka"
 set :scm, :git
 set :repository,  "git://github.com/secret-development/etvans_imkv.git"
-
-set :user, "hosting_ipotekacenter"
+set :user, "hosting_lagox"
 set :use_sudo, false
 set :deploy_to, "/home/#{user}/projects/#{application}"
-set :keep_releases, 1
+set :keep_releases, 2
 
-role :web, "neon.locum.ru"
-role :app, "neon.locum.ru"
-role :db,  "neon.locum.ru", :primary => true
+role :web, "lithium.locum.ru"
+role :app, "lithium.locum.ru"
+role :db,  "lithium.locum.ru", :primary => true
 set :deploy_via, :remote_cache
-set :unicorn_conf, "/etc/unicorn/#{application}.ipotekacenter.rb"
-set :unicorn_pid, "/var/run/unicorn/#{application}.ipotekacenter.pid"
+set :unicorn_conf, "/etc/unicorn/#{application}.lagox.rb"
+set :unicorn_pid, "/var/run/unicorn/#{application}.lagox.pid"
 set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use 1.9.3 do bundle exec unicorn_rails -Dc #{unicorn_conf})"
 
 
@@ -65,7 +64,7 @@ namespace :deploy do
   desc "Bundle install"
   task :bundle_gems, :roles => :app do
     puts "\n\n=== Install gems ===\n\n"
-    run "cd #{current_path} && rvm use 1.9.3 do bundle install --without development --without test --path ~/.gem"
+    run "cd #{current_path} && rvm use 1.9.3 do bundle install --without development --without test --deployment --path ~/.gem"
     puts "\n\n=== end install gems ===\n\n"
   end
   
