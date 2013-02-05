@@ -119,10 +119,19 @@
         <%= f.select :price_currency, @subject.price_cur %>
       </div>
     </div>
+    <!-- main area -->
     <div class="control-group">
       <%= f.label :area, "Площадь:" %>
       <div class="controls">
         <%= f.text_field :area, :placeholder => "70", :class => "sm-inp" %> 
+        <span class="calc-label">м&sup2;</span>
+      </div>
+    </div>
+    <!-- kitchen area -->
+    <div class="control-group">
+      <%= f.label :area, "Площадь кухни:" %>
+      <div class="controls">
+        <%= f.text_field :kitchen_area, :placeholder => "30", :class => "sm-inp" %> 
         <span class="calc-label">м&sup2;</span>
       </div>
     </div>

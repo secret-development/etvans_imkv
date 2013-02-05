@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911054149) do
+ActiveRecord::Schema.define(:version => 20130205162209) do
 
   create_table "advices", :force => true do |t|
     t.string   "title"
@@ -137,6 +137,8 @@ ActiveRecord::Schema.define(:version => 20120911054149) do
     t.integer  "resident_id"
     t.integer  "floorall"
     t.text     "note"
+    t.boolean  "published"
+    t.float    "kitchen_area"
   end
 
   create_table "tasks", :force => true do |t|

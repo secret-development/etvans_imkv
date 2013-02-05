@@ -41,6 +41,16 @@
         Этажность: <%= @subject.floorall %>
       </div>
     <% end %>
+    <% if have_object?(@subject.area) %>
+      <div class="subject-show-field">
+        Площадь: <%= to_area(@subject.area) %>
+      </div>
+    <% end %>
+    <% if have_object?(@subject.kitchen_area) %>
+      <div class="subject-show-field">
+        Площадь кухни: <%= to_area(@subject.kitchen_area) %>
+      </div>
+    <% end %>
     <% if have_object?(@subject.resident) %>
       <div class="subject-show-field">
         ЖК: <%= @subject.resident.title %>
@@ -51,8 +61,8 @@
         Район: <%= @subject.district.title %>
       </div>
     <% end %>
-    <div class="subject-show-field">
-      <%= puts_properties(@subject) %>
+    <div class="subject-show-field subj-properties">
+      <b><%= puts_properties(@subject) %></b>
     </div>
     <div class="subject-show-field">
       <%= @subject.note %>
