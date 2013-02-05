@@ -51,6 +51,16 @@
               Этажность: <%= s.floorall %>
             </div>
           <% end %>
+          <% if have_object?(s.area) %>
+            <div>
+              Площадь: <%= to_area(s.area) %>
+            </div>
+          <% end %>
+          <% if have_object?(s.kitchen_area) %>
+            <div>
+              Площадь кухни: <%= to_area(s.kitchen_area) %>
+            </div>
+          <% end %>
           <% if have_object?(s.resident) %>
             <div>
               ЖК: <%= s.resident.title %>
