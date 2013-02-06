@@ -328,12 +328,12 @@ module ApplicationHelper
     output_properties = ""
     object.properties.collect do |p|
       if p == last_property
-        output_properties += "#{p.condition}: #{p.value}"
+        output_properties += "<b>#{p.condition}:</b> #{p.value}<br>"
       else
-        output_properties += "#{p.condition}: #{p.value}, "
+        output_properties += "<b>#{p.condition}:</b> #{p.value}<br>"
       end
     end
-    return output_properties.to_s
+    return output_properties.html_safe
   end
   
 end
