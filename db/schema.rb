@@ -137,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20130205162209) do
     t.integer  "resident_id"
     t.integer  "floorall"
     t.text     "note"
-    t.boolean  "published"
     t.float    "kitchen_area"
   end
 
